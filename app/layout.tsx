@@ -1,11 +1,105 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import Link from "next/link";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
-export const metadata: Metadata = {
-  title: "OceanFresh | Importación de Pescado desde Mauritania",
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://oceanfresh.es";
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "OceanFresh",
+  url: siteUrl,
+  logo: `${siteUrl}/logo.jpeg`,
   description:
-    "Importación directa de pescado fresco y congelado desde el Banco Pesquero de Mauritania. Calidad premium, cadena de frío certificada y exportación sin intermediarios.",
+    "Importacion directa de pescado fresco y congelado desde Mauritania para distribuidores y canal HORECA.",
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "OceanFresh",
+  url: siteUrl,
+  inLanguage: "es",
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "OceanFresh | Importacion de Pescado desde Mauritania",
+    template: "%s | OceanFresh",
+  },
+  description:
+    "Importacion directa de pescado fresco y congelado desde el Banco Pesquero de Mauritania. Calidad premium, cadena de frio certificada y exportacion sin intermediarios.",
+  keywords: [
+    "importacion de pescado",
+    "pescado mauritania",
+    "exportacion pescado congelado",
+    "proveedor pescado mayorista",
+    "pescado para horeca",
+    "oceanfresh",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    url: "/",
+    siteName: "OceanFresh",
+    title: "OceanFresh | Importacion de Pescado desde Mauritania",
+    description:
+      "Importacion directa de pescado fresco y congelado desde Mauritania con trazabilidad certificada.",
+    images: [
+      {
+        url: "/fondo.webp",
+        width: 1200,
+        height: 630,
+        alt: "OceanFresh - Importacion de pescado",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OceanFresh | Importacion de Pescado desde Mauritania",
+    description:
+      "Importacion directa de pescado fresco y congelado desde Mauritania con trazabilidad certificada.",
+    images: ["/fondo.webp"],
+  },
+  icons: {
+    icon: "/logo.jpeg",
+    apple: "/logo.jpeg",
+    shortcut: "/logo.jpeg",
+  },
+  applicationName: "OceanFresh",
+  category: "food",
+  authors: [{ name: "OceanFresh", url: siteUrl }],
+  creator: "OceanFresh",
+  publisher: "OceanFresh",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0b1f49",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -16,6 +110,14 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="antialiased bg-white text-gray-900">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <Navbar />
         <main>{children}</main>
         <footer className="bg-blue-950 text-gray-400 py-10 mt-16">
@@ -28,10 +130,10 @@ export default function RootLayout({
                 <p className="text-sm mt-1">Importación directa desde Mauritania</p>
               </div>
               <div className="flex gap-8 text-sm">
-                <a href="/" className="hover:text-white transition-colors">Inicio</a>
-                <a href="/productos" className="hover:text-white transition-colors">Catálogo</a>
-                <a href="/#quienes-somos" className="hover:text-white transition-colors">Quiénes Somos</a>
-                <a href="/contacto" className="hover:text-white transition-colors">Contacto</a>
+                <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+                <Link href="/productos" className="hover:text-white transition-colors">Catalogo</Link>
+                <Link href="/#quienes-somos" className="hover:text-white transition-colors">Quienes Somos</Link>
+                <Link href="/contacto" className="hover:text-white transition-colors">Contacto</Link>
               </div>
             </div>
             <div className="border-t border-blue-900 mt-8 pt-6 text-center text-xs">
