@@ -1,0 +1,62 @@
+[
+  {
+    "id": "pulpo-mauritano",
+    "nombre": "Pulpo Mauritano",
+    "origen": "Banco Pesquero de Mauritania",
+    "descripcion": "El pulpo mauritano (Octopus vulgaris) es capturado artesanalmente en las ricas aguas del Banco Pesquero de Mauritania, uno de los caladeros más productivos del Atlántico Norte. Su carne es firme, de sabor intenso y ligeramente salino, ideal para el mercado gourmet europeo y asiático. Capturado entre los meses de septiembre y mayo, se procesa en frío a bordo de las embarcaciones para garantizar la máxima frescura. Calibres disponibles: 1-2 kg, 2-3 kg y 3+ kg.",
+    "imagen_url": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=800&auto=format&fit=crop",
+    "categoria": "Cefalópodos",
+    "talla_minima": "500g",
+    "temporada": "Septiembre – Mayo"
+  },
+  {
+    "id": "merluza-atlantica",
+    "nombre": "Merluza Atlántica",
+    "origen": "Aguas del Atlántico, Costa Mauritana",
+    "descripcion": "La merluza atlántica (Merluccius merluccius) es uno de los pescados blancos más apreciados en los mercados de España, Italia y Portugal. Pescada en profundidades de entre 100 y 600 metros frente a las costas de Mauritania, su carne es blanca, delicada y de bajo contenido en grasa. Se comercializa entera, eviscerada o en lomos según las necesidades del comprador. Calibres disponibles: 200-400g, 400-800g, 800g-1,5kg y 1,5kg+.",
+    "imagen_url": "https://images.unsplash.com/photo-1534323954578-b21c6ede1a56?w=800&auto=format&fit=crop",
+    "categoria": "Pescado Blanco",
+    "talla_minima": "200g",
+    "temporada": "Todo el año"
+  },
+  {
+    "id": "sardina-fresca",
+    "nombre": "Sardina del Atlántico",
+    "origen": "Costa Norte de Mauritania",
+    "descripcion": "La sardina atlántica (Sardina pilchardus) capturada frente a las costas de Mauritania destaca por su alto contenido en Omega-3, su sabor pronunciado y su textura jugosa. Ideal para el mercado del fresco, la conserva y la industria de transformación. Se oferta en presentación fresca con hielo, congelada IQF o en bloques. Calibres disponibles: 40-50 piezas/kg, 30-40 piezas/kg y 20-30 piezas/kg.",
+    "imagen_url": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800&auto=format&fit=crop",
+    "categoria": "Pescado Azul",
+    "talla_minima": "20g",
+    "temporada": "Todo el año"
+  },
+  {
+    "id": "langostino-atlantico",
+    "nombre": "Langostino del Atlántico",
+    "origen": "Aguas Profundas, Mauritania",
+    "descripcion": "El langostino atlántico (Penaeus kerathurus) proveniente de las aguas profundas frente a Mauritania es considerado uno de los crustáceos de mayor calidad del mercado. De color rojizo intenso antes de la cocción y con un sabor dulce y una textura firme, es altamente valorado en los mercados de la Unión Europea y Asia. Presentación: entero fresco, entero congelado o pelado y desvenado (PD). Calibres: 10-20, 20-30, 30-40 u/kg.",
+    "imagen_url": "https://images.unsplash.com/photo-1565217007052-49f9eed6e48d?w=800&auto=format&fit=crop",
+    "categoria": "Crustáceos",
+    "talla_minima": "15g",
+    "temporada": "Todo el año"
+  },
+  {
+    "id": "calamar-gigante",
+    "nombre": "Calamar Gigante",
+    "origen": "Atlántico Este, Mauritania",
+    "descripcion": "El calamar gigante (Dosidicus gigas) capturado en el Atlántico Este ofrece un manto de gran tamaño y alto rendimiento de carne. Su carne blanca y firme es ideal para la industria de la restauración y la transformación. Se comercializa en tubo limpio congelado, en anillas IQF o en bloques. La sostenibilidad de la captura está certificada por organismos internacionales. Calibres disponibles: U5, U3, U1 (mantos por caja de 10 kg).",
+    "imagen_url": "https://images.unsplash.com/photo-1551504734-5da1c742d797?w=800&auto=format&fit=crop",
+    "categoria": "Cefalópodos",
+    "talla_minima": "300g",
+    "temporada": "Todo el año"
+  },
+  {
+    "id": "dorada-atlantica",
+    "nombre": "Dorada del Atlántico",
+    "origen": "Costa Atlántica, Mauritania",
+    "descripcion": "La dorada atlántica (Sparus aurata) salvaje capturada frente a Mauritania es sinónimo de calidad premium. Su piel dorada y brillante, su carne compacta y su sabor suave y ligeramente dulce la convierten en uno de los pescados más demandados por los restaurantes de alta cocina europeos. Se exporta entera con hielo en cajas de 5 kg o 10 kg. Calibres: 200-400g, 400-600g, 600g-1kg.",
+    "imagen_url": "https://images.unsplash.com/photo-1498654200943-1088dd4438ae?w=800&auto=format&fit=crop",
+    "categoria": "Pescado Blanco",
+    "talla_minima": "200g",
+    "temporada": "Octubre – Marzo"
+  }
+]
