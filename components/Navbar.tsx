@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -11,11 +11,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl">🐟</span>
-            <span className="text-xl font-bold tracking-tight text-white">
-              Ocean<span className="text-blue-300">Fresh</span>
-            </span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.jpeg"
+              alt="OceanFresh Logo"
+              width={44}
+              height={44}
+              className="h-11 w-11 object-contain rounded-full bg-white p-0.5"
+              priority
+            />
           </Link>
 
           {/* Desktop menu */}

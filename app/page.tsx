@@ -10,13 +10,13 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&auto=format&fit=crop"
+          src="/fondo.webp"
           alt="Pesca artesanal en Mauritania"
           fill
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-blue-950/65" />
+        <div className="absolute inset-0 bg-blue-950/50" />
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
           <span className="inline-block bg-blue-500/20 border border-blue-400/40 text-blue-200 text-sm font-medium px-4 py-1 rounded-full mb-6 tracking-wide uppercase">
             Importación directa • Banco Pesquero de Mauritania
