@@ -21,6 +21,9 @@ type FooterCopy = {
   catalog: string;
   about: string;
   contact: string;
+  legalNotice: string;
+  privacyPolicy: string;
+  cookiesPolicy: string;
   copyright: string;
 };
 
@@ -49,6 +52,9 @@ const copyByLocale: Record<Locale, FooterCopy> = {
     catalog: "Catalogo",
     about: "Quienes Somos",
     contact: "Contacto",
+    legalNotice: "Aviso legal",
+    privacyPolicy: "Politica de privacidad",
+    cookiesPolicy: "Politica de cookies",
     copyright: "Todos los derechos reservados.",
   },
   en: {
@@ -75,6 +81,9 @@ const copyByLocale: Record<Locale, FooterCopy> = {
     catalog: "Catalog",
     about: "About Us",
     contact: "Contact",
+    legalNotice: "Legal notice",
+    privacyPolicy: "Privacy policy",
+    cookiesPolicy: "Cookies policy",
     copyright: "All rights reserved.",
   },
   fr: {
@@ -101,6 +110,9 @@ const copyByLocale: Record<Locale, FooterCopy> = {
     catalog: "Catalogue",
     about: "Qui sommes-nous",
     contact: "Contact",
+    legalNotice: "Mentions legales",
+    privacyPolicy: "Politique de confidentialite",
+    cookiesPolicy: "Politique de cookies",
     copyright: "Tous droits reserves.",
   },
   ar: {
@@ -126,6 +138,9 @@ const copyByLocale: Record<Locale, FooterCopy> = {
     catalog: "المنتجات",
     about: "من نحن",
     contact: "اتصل بنا",
+    legalNotice: "الاشعار القانوني",
+    privacyPolicy: "سياسة الخصوصية",
+    cookiesPolicy: "سياسة ملفات تعريف الارتباط",
     copyright: "جميع الحقوق محفوظة.",
   },
 };
@@ -213,6 +228,18 @@ export default function SiteFooter() {
                 {t.contactButton}
               </Link>
             </div>
+          </div>
+
+          <div className="mt-10 grid gap-3 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-5 text-sm text-blue-100/90">
+            <Link href="/aviso-legal" className="rounded-lg border border-blue-800/80 bg-blue-900/40 px-4 py-2 text-center hover:text-blue-300 transition-colors">
+              {t.legalNotice}
+            </Link>
+            <Link href="/politica-privacidad" className="rounded-lg border border-blue-800/80 bg-blue-900/40 px-4 py-2 text-center hover:text-blue-300 transition-colors">
+              {t.privacyPolicy}
+            </Link>
+            <Link href="/politica-cookies" className="rounded-lg border border-blue-800/80 bg-blue-900/40 px-4 py-2 text-center hover:text-blue-300 transition-colors">
+              {t.cookiesPolicy}
+            </Link>
           </div>
 
           <div className="border-t border-blue-800 mt-10 pt-6 text-center text-xs text-blue-200/90">

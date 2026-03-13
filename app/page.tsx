@@ -15,16 +15,6 @@ const fadeUp: Variants = {
   }),
 };
 
-const fadeLeft: Variants = {
-  hidden: { opacity: 0, x: -60 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
-};
-
-const fadeRight: Variants = {
-  hidden: { opacity: 0, x: 60 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
-};
-
 type HomeCopy = {
   heroBadge: string;
   heroTitleStart: string;
@@ -444,8 +434,8 @@ export default function Home() {
       </section>
 
       {/* Quiénes Somos */}
-      <section id="quienes-somos" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="quienes-somos" className="py-20 bg-gray-50 overflow-x-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden">
           <motion.div
             className="text-center mb-14"
             variants={fadeUp}
@@ -464,10 +454,11 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
               className="relative h-80 md:h-full min-h-80 rounded-2xl overflow-hidden shadow-xl"
-              variants={fadeLeft}
+              variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
+              custom={0}
             >
               <Image
                 src="/puerto.webp"
@@ -479,10 +470,11 @@ export default function Home() {
 
             <motion.div
               className="space-y-8"
-              variants={fadeRight}
+              variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
+              custom={1}
             >
               {/* Misión */}
               <div>

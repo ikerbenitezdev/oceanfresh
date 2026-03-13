@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { getDirection, type Locale } from "@/lib/locale";
 import { useLocale } from "@/lib/locale-client";
 
@@ -12,6 +13,8 @@ type ContactCopy = {
   country: string;
   company: string;
   message: string;
+  consentPrefix: string;
+  privacyPolicyLabel: string;
   send: string;
   policy: string;
   contactInfo: string;
@@ -44,6 +47,8 @@ const copyByLocale: Record<Locale, ContactCopy> = {
     country: "Pais *",
     company: "Empresa / Organizacion",
     message: "Mensaje *",
+    consentPrefix: "He leido y acepto la",
+    privacyPolicyLabel: "Politica de privacidad",
     send: "Enviar mensaje",
     policy:
       "Al enviar este formulario, aceptas nuestra politica de privacidad. Tus datos nunca seran cedidos a terceros.",
@@ -81,6 +86,8 @@ const copyByLocale: Record<Locale, ContactCopy> = {
     country: "Country *",
     company: "Company / Organization",
     message: "Message *",
+    consentPrefix: "I have read and accept the",
+    privacyPolicyLabel: "Privacy Policy",
     send: "Send message",
     policy:
       "By submitting this form, you accept our privacy policy. Your data will never be shared with third parties.",
@@ -118,6 +125,8 @@ const copyByLocale: Record<Locale, ContactCopy> = {
     country: "Pays *",
     company: "Entreprise / Organisation",
     message: "Message *",
+    consentPrefix: "J'ai lu et j'accepte la",
+    privacyPolicyLabel: "Politique de confidentialite",
     send: "Envoyer le message",
     policy:
       "En envoyant ce formulaire, vous acceptez notre politique de confidentialite. Vos donnees ne seront jamais cedees a des tiers.",
@@ -155,6 +164,8 @@ const copyByLocale: Record<Locale, ContactCopy> = {
     country: "الدولة *",
     company: "الشركة / المؤسسة",
     message: "الرسالة *",
+    consentPrefix: "لقد قرات ووافقت على",
+    privacyPolicyLabel: "سياسة الخصوصية",
     send: "ارسال الرسالة",
     policy:
       "عند ارسال هذا النموذج فانك توافق على سياسة الخصوصية. لن تتم مشاركة بياناتك مع اي طرف ثالث.",
@@ -271,6 +282,21 @@ export default function ContactoClient() {
                 className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
               />
             </div>
+
+            <label className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700">
+              <input
+                type="checkbox"
+                required
+                className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              />
+              <span>
+                {t.consentPrefix}{" "}
+                <Link href="/politica-privacidad" className="text-blue-600 hover:underline">
+                  {t.privacyPolicyLabel}
+                </Link>
+                .
+              </span>
+            </label>
 
             <button
               type="submit"

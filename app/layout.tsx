@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import CookieNotice from "../components/CookieNotice";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -120,6 +121,7 @@ export default function RootLayout({
         />
         <Navbar />
         <main>{children}</main>
+        <CookieNotice />
         <SiteFooter />
       </body>
     </html>
