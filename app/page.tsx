@@ -284,7 +284,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
         <Image
-          src="/fondo.webp"
+          src="/fondo2.webp"
           alt="Pesca artesanal en Mauritania"
           fill
           priority
@@ -461,7 +461,7 @@ export default function Home() {
               custom={0}
             >
               <Image
-                src="/puerto.webp"
+                src="/fondo.webp"
                 alt="Puerto de pesca en Mauritania"
                 fill
                 className="object-cover"
