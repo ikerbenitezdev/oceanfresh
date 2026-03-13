@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getDirection, type Locale } from "@/lib/locale";
+import { useLocale } from "@/lib/locale-client";
 
 type Producto = {
   id: string;
@@ -21,6 +23,127 @@ type CatalogoClientProps = {
   productos: Producto[];
 };
 
+type CatalogCopy = {
+  badge: string;
+  title: string;
+  description: string;
+  searchLabel: string;
+  searchPlaceholder: string;
+  typeLabel: string;
+  all: string;
+  noResultsTitle: string;
+  noResultsDescription: string;
+  ctaTitle: string;
+  ctaDescription: string;
+  ctaButton: string;
+  season: string;
+  results: (count: number) => string;
+  categoryLabels: Record<string, string>;
+};
+
+const copyByLocale: Record<Locale, CatalogCopy> = {
+  es: {
+    badge: "Importacion directa",
+    title: "Catalogo de Productos",
+    description:
+      "Todas nuestras especies son seleccionadas en lonja, procesadas en frio y certificadas para exportacion. Disponibilidad y calibres a consultar.",
+    searchLabel: "Buscar por nombre",
+    searchPlaceholder: "Ej. atun, bacalao, pulpo...",
+    typeLabel: "Filtrar por tipo",
+    all: "Todos",
+    noResultsTitle: "No hay resultados",
+    noResultsDescription:
+      "No hemos encontrado productos con ese nombre o dentro de ese tipo. Prueba con otra busqueda o vuelve a la categoria Todos.",
+    ctaTitle: "No encuentras lo que buscas?",
+    ctaDescription:
+      "Trabajamos con mas de 15 especies. Contactanos y te enviaremos la lista completa con disponibilidad y precios.",
+    ctaButton: "Solicitar informacion",
+    season: "Temporada",
+    results: (count) => `${count} producto${count === 1 ? "" : "s"} encontrado${count === 1 ? "" : "s"}.`,
+    categoryLabels: {
+      Pescado: "Pescado",
+      Condroictios: "Condrictios",
+      Crustaceos: "Crustaceos",
+      Cefalopodos: "Cefalopodos",
+    },
+  },
+  en: {
+    badge: "Direct import",
+    title: "Product Catalog",
+    description:
+      "All species are selected directly at landing ports, processed under cold chain, and certified for export. Availability and sizes on request.",
+    searchLabel: "Search by name",
+    searchPlaceholder: "Ex. tuna, cod, octopus...",
+    typeLabel: "Filter by type",
+    all: "All",
+    noResultsTitle: "No results",
+    noResultsDescription:
+      "No products were found for that name or type. Try another query or switch back to All.",
+    ctaTitle: "Can't find what you need?",
+    ctaDescription:
+      "We work with over 15 species. Contact us and we will send full availability and pricing.",
+    ctaButton: "Request information",
+    season: "Season",
+    results: (count) => `${count} product${count === 1 ? "" : "s"} found.`,
+    categoryLabels: {
+      Pescado: "Fish",
+      Condroictios: "Cartilaginous fish",
+      Crustaceos: "Crustaceans",
+      Cefalopodos: "Cephalopods",
+    },
+  },
+  fr: {
+    badge: "Import direct",
+    title: "Catalogue des Produits",
+    description:
+      "Toutes nos especes sont selectionnees en criée, traitees sous chaine du froid et certifiees pour l'exportation. Disponibilite et calibres sur demande.",
+    searchLabel: "Rechercher par nom",
+    searchPlaceholder: "Ex. thon, morue, poulpe...",
+    typeLabel: "Filtrer par type",
+    all: "Tous",
+    noResultsTitle: "Aucun resultat",
+    noResultsDescription:
+      "Aucun produit ne correspond a ce nom ou ce type. Essayez une autre recherche ou revenez a Tous.",
+    ctaTitle: "Vous ne trouvez pas ce que vous cherchez ?",
+    ctaDescription:
+      "Nous travaillons avec plus de 15 especes. Contactez-nous pour recevoir la liste complete avec disponibilite et prix.",
+    ctaButton: "Demander des informations",
+    season: "Saison",
+    results: (count) => `${count} produit${count === 1 ? "" : "s"} trouve${count === 1 ? "" : "s"}.`,
+    categoryLabels: {
+      Pescado: "Poisson",
+      Condroictios: "Poissons cartilagineux",
+      Crustaceos: "Crustaces",
+      Cefalopodos: "Cephalopodes",
+    },
+  },
+  ar: {
+    badge: "استيراد مباشر",
+    title: "كتالوج المنتجات",
+    description:
+      "يتم اختيار جميع الاصناف مباشرة من الموانئ ومعالجتها ضمن سلسلة تبريد معتمدة ومطابقة للتصدير. التوفر والمقاسات حسب الطلب.",
+    searchLabel: "ابحث بالاسم",
+    searchPlaceholder: "مثال: تونة، قد، اخطبوط...",
+    typeLabel: "تصفية حسب النوع",
+    all: "الكل",
+    noResultsTitle: "لا توجد نتائج",
+    noResultsDescription:
+      "لم يتم العثور على منتجات بهذا الاسم او النوع. جرب بحثا اخر او عد الى خيار الكل.",
+    ctaTitle: "لم تجد ما تبحث عنه؟",
+    ctaDescription:
+      "نعمل مع اكثر من 15 نوعا. تواصل معنا وسنرسل لك قائمة كاملة بالتوفر والاسعار.",
+    ctaButton: "طلب معلومات",
+    season: "الموسم",
+    results: (count) => `تم العثور على ${count} منتج.`,
+    categoryLabels: {
+      Pescado: "اسماك",
+      Condroictios: "اسماك غضروفية",
+      Crustaceos: "قشريات",
+      Cefalopodos: "رأسيات الارجل",
+    },
+  },
+};
+
 function normalizeText(value: string) {
   return value
     .normalize("NFD")
@@ -29,19 +152,19 @@ function normalizeText(value: string) {
 }
 
 export default function CatalogoClient({ productos }: CatalogoClientProps) {
+  const locale = useLocale();
+  const t = copyByLocale[locale];
+  const dir = getDirection(locale);
   const [busqueda, setBusqueda] = useState("");
-  const [categoriaActiva, setCategoriaActiva] = useState("Todos");
+  const [categoriaActiva, setCategoriaActiva] = useState("ALL");
 
-  const categorias = [
-    "Todos",
-    ...Array.from(new Set(productos.map((producto) => producto.categoria))).sort(),
-  ];
+  const categorias = ["ALL", ...Array.from(new Set(productos.map((producto) => producto.categoria))).sort()];
 
   const busquedaNormalizada = normalizeText(busqueda.trim());
 
   const productosFiltrados = productos.filter((producto) => {
     const coincideCategoria =
-      categoriaActiva === "Todos" || producto.categoria === categoriaActiva;
+      categoriaActiva === "ALL" || producto.categoria === categoriaActiva;
 
     const coincideBusqueda =
       busquedaNormalizada.length === 0 ||
@@ -52,18 +175,16 @@ export default function CatalogoClient({ productos }: CatalogoClientProps) {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" dir={dir}>
       <div className="text-center mb-14">
         <span className="text-blue-600 font-semibold uppercase tracking-widest text-sm">
-          Importación directa
+          {t.badge}
         </span>
         <h1 className="text-4xl font-extrabold text-gray-900 mt-2">
-          Catálogo de Productos
+          {t.title}
         </h1>
         <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">
-          Todas nuestras especies son seleccionadas en lonja, procesadas en
-          frío y certificadas para exportación. Disponibilidad y calibres a
-          consultar.
+          {t.description}
         </p>
       </div>
 
@@ -71,20 +192,20 @@ export default function CatalogoClient({ productos }: CatalogoClientProps) {
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center">
           <label className="block">
             <span className="block text-sm font-semibold text-gray-700 mb-2">
-              Buscar por nombre
+              {t.searchLabel}
             </span>
             <input
               type="text"
               value={busqueda}
               onChange={(event) => setBusqueda(event.target.value)}
-              placeholder="Ej. atún, bacalao, pulpo..."
+              placeholder={t.searchPlaceholder}
               className="w-full rounded-2xl border border-gray-300 px-4 py-3 text-gray-900 outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
             />
           </label>
 
           <label className="block">
             <span className="block text-sm font-semibold text-gray-700 mb-2">
-              Filtrar por tipo
+              {t.typeLabel}
             </span>
             <select
               value={categoriaActiva}
@@ -93,7 +214,7 @@ export default function CatalogoClient({ productos }: CatalogoClientProps) {
             >
               {categorias.map((categoria) => (
                 <option key={categoria} value={categoria}>
-                  {categoria}
+                  {categoria === "ALL" ? t.all : t.categoryLabels[categoria] ?? categoria}
                 </option>
               ))}
             </select>
@@ -115,14 +236,14 @@ export default function CatalogoClient({ productos }: CatalogoClientProps) {
                     : "rounded-full bg-blue-50 border border-blue-100 px-4 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-100"
                 }
               >
-                {categoria}
+                {categoria === "ALL" ? t.all : t.categoryLabels[categoria] ?? categoria}
               </button>
             );
           })}
         </div>
 
         <p className="mt-5 text-sm text-gray-500">
-          {productosFiltrados.length} producto{productosFiltrados.length === 1 ? "" : "s"} encontrado{productosFiltrados.length === 1 ? "" : "s"}.
+          {t.results(productosFiltrados.length)}
         </p>
       </div>
 
@@ -143,7 +264,7 @@ export default function CatalogoClient({ productos }: CatalogoClientProps) {
                 />
                 <div className="absolute top-3 left-3">
                   <span className="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                    {producto.categoria}
+                    {t.categoryLabels[producto.categoria] ?? producto.categoria}
                   </span>
                 </div>
               </div>
@@ -159,7 +280,7 @@ export default function CatalogoClient({ productos }: CatalogoClientProps) {
                 </p>
                 <div className="mt-4 flex items-center justify-between gap-3">
                   <div className="text-xs text-gray-400">
-                    <span className="font-medium text-gray-600">Temporada:</span>{" "}
+                    <span className="font-medium text-gray-600">{t.season}:</span>{" "}
                     {producto.temporada}
                   </div>
                   <span className="text-blue-600 text-sm font-semibold group-hover:underline">
@@ -172,27 +293,25 @@ export default function CatalogoClient({ productos }: CatalogoClientProps) {
         </div>
       ) : (
         <div className="rounded-3xl border border-dashed border-blue-200 bg-blue-50 px-6 py-12 text-center">
-          <h2 className="text-2xl font-bold text-gray-900">No hay resultados</h2>
+          <h2 className="text-2xl font-bold text-gray-900">{t.noResultsTitle}</h2>
           <p className="mt-3 text-gray-600 max-w-xl mx-auto">
-            No hemos encontrado productos con ese nombre o dentro de ese tipo.
-            Prueba con otra búsqueda o vuelve a la categoría "Todos".
+            {t.noResultsDescription}
           </p>
         </div>
       )}
 
       <div className="mt-16 bg-blue-950 rounded-2xl p-10 text-center text-white">
         <h2 className="text-2xl font-bold mb-3">
-          ¿No encuentras lo que buscas?
+          {t.ctaTitle}
         </h2>
         <p className="text-gray-300 mb-6">
-          Trabajamos con más de 15 especies. Contáctanos y te enviaremos la
-          lista completa con disponibilidad y precios.
+          {t.ctaDescription}
         </p>
         <Link
           href="/contacto"
           className="inline-block bg-blue-500 hover:bg-blue-400 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
         >
-          Solicitar información
+          {t.ctaButton}
         </Link>
       </div>
     </div>
