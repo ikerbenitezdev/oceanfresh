@@ -63,27 +63,6 @@
         "descripcion_larga": "El atún es una especie pelágica de carne roja, firme y rica en proteínas. Su sabor intenso y su textura lo convierten en uno de los productos más demandados del mercado internacional. Capturado en aguas profundas del Atlántico mauritano, el atún se procesa en piezas enteras y se congela inmediatamente para preservar su frescura natural. Ideal para exportaciones y mercados que exigen un producto de alto valor y calidad garantizada."
     },
     {
-        "id": "bacalao",
-        "nombre": "Bacalao",
-        "origen": "Atlántico Norte (Mauritania)",
-        "descripcion": "El bacalao es un pescado blanco de carne firme y textura delicada, muy valorado por su sabor suave y su bajo contenido en grasa. Capturado en aguas frías del Atlántico Norte, se procesa cuidadosamente tras su captura para garantizar la máxima calidad. Su carne es ideal para exportación y consumo internacional, conservando su frescura gracias a un proceso de congelación rápida que mantiene intactas sus propiedades naturales.",
-        "imagen_url": "/productos/bacalao-930x620.webp",
-        "categoria": "Pescado",
-        "talla_minima": "Consultar",
-        "temporada": "Pendiente de consultar",
-        "precio": null,
-        "ficha_tecnica": {
-            "nombre_cientifico": "Gadus morhua",
-            "presentacion": "Piezas enteras, evisceradas y congeladas",
-            "temperatura_conservacion": "-18 °C",
-            "envasado": "Cajas de cartón aluminizado (10-20 kg)",
-            "zona_captura": "Atlántico Norte (Mauritania)",
-            "certificacion": "ONISPA"
-        },
-        "descripcion_corta": "Ficha técnica Nombre científico: Gadus morhua Presentación: Piezas enteras, evisceradas y congeladas Temperatura de conservación: -18 °C Envasado: Cajas de cartón aluminizado (10-20 kg) Zona de captura: Atlántico Norte (Mauritania) Certificación: ONISPA",
-        "descripcion_larga": "El bacalao es un pescado blanco de carne firme y textura delicada, muy valorado por su sabor suave y su bajo contenido en grasa. Capturado en aguas frías del Atlántico Norte, se procesa cuidadosamente tras su captura para garantizar la máxima calidad. Su carne es ideal para exportación y consumo internacional, conservando su frescura gracias a un proceso de congelación rápida que mantiene intactas sus propiedades naturales."
-    },
-    {
         "id": "bagre-bocalisa",
         "nombre": "Bagre bocalisa",
         "origen": "Atlántico Centro-Este - Mauritania",
@@ -355,27 +334,6 @@
         },
         "descripcion_corta": "Ficha técnica Nombre científico: Drepane africana Presentación: Piezas enteras, evisceradas y congeladas Temperatura de conservación: -18 °C Envasado: Cajas de cartón aluminizado (10-20 kg) Zona de captura: Atlántico Centro-Este - Mauritania Certificación sanitaria: ONISPA",
         "descripcion_larga": "El catemo africano es una especie demersal costera muy valorada por su carne blanca, firme y de sabor suave. Habita en las aguas templadas del Atlántico mauritano, donde se alimenta de pequeños crustáceos y moluscos. Su carne se caracteriza por su textura compacta y su excelente conservación tras la congelación. Es una especie apreciada tanto en los mercados locales como internacionales por su calidad y frescura."
-    },
-    {
-        "id": "centolla-europea",
-        "nombre": "Centolla europea",
-        "origen": "Atlántico Centro-Este - Mauritania",
-        "descripcion": "La centolla europea es un crustáceo de gran tamaño y alto valor comercial, muy apreciado por su carne blanca, firme y de sabor intenso. Habita en los fondos rocosos y arenosos del Atlántico mauritano, entre 20 y 150 metros de profundidad. Su carne es muy demandada en los mercados europeos por su textura y calidad gourmet. Tras la captura, se limpia cuidadosamente, se clasifica y se congela a −18 °C, preservando toda su frescura y propiedades naturales.",
-        "imagen_url": "/productos/centollaaa.jpg",
-        "categoria": "Crustáceos",
-        "talla_minima": "Consultar",
-        "temporada": "Pendiente de consultar",
-        "precio": null,
-        "ficha_tecnica": {
-            "nombre_cientifico": "Maja squinado",
-            "presentacion": "Entera o en secciones (pinzas, patas, cuerpo), cruda o cocida, congelada",
-            "temperatura_conservacion": "−18 °C",
-            "envasado": "Cajas de cartón aluminizado (5-10 kg)",
-            "zona_captura": "Atlántico Centro-Este - Mauritania",
-            "certificacion": "ONISPA"
-        },
-        "descripcion_corta": "Ficha técnica Nombre científico: Maja squinado Presentación: Entera o en secciones (pinzas, patas, cuerpo), cruda o cocida, congelada Temperatura de conservación: −18 °C Envasado: Cajas de cartón aluminizado (5-10 kg) Zona de captura: Atlántico Centro-Este - Mauritania Certificación sanitaria: ONISPA",
-        "descripcion_larga": "La centolla europea es un crustáceo de gran tamaño y alto valor comercial, muy apreciado por su carne blanca, firme y de sabor intenso. Habita en los fondos rocosos y arenosos del Atlántico mauritano, entre 20 y 150 metros de profundidad. Su carne es muy demandada en los mercados europeos por su textura y calidad gourmet. Tras la captura, se limpia cuidadosamente, se clasifica y se congela a −18 °C, preservando toda su frescura y propiedades naturales."
     },
     {
         "id": "chacarona-de-canarias",
@@ -693,27 +651,6 @@
         "descripcion_larga": "La langosta mora es una especie bentónica de gran valor comercial, reconocida por su carne blanca, firme y de sabor exquisito. Habita en los fondos rocosos del Atlántico mauritano, a profundidades comprendidas entre 150 y 400 metros, donde las aguas frías y limpias favorecen su calidad. Es una de las especies más apreciadas para exportación por su textura delicada y su alto valor gastronómico. Tras la captura, se clasifica, limpia y congela a −18 °C, garantizando su frescura y excelente conservación."
     },
     {
-        "id": "langosta-real",
-        "nombre": "Langosta real",
-        "origen": "Atlántico Centro-Este - Mauritania",
-        "descripcion": "La langosta real es una especie bentónica de gran valor comercial, muy apreciada por su carne blanca, firme y de sabor dulce. Habita en los fondos rocosos y coralinos del Atlántico mauritano, a profundidades medias, donde se alimenta de moluscos y pequeños crustáceos. Su carne es muy demandada en los mercados europeos y asiáticos por su textura delicada y su calidad constante. Tras la captura, se clasifica, limpia y congela a −18 °C, garantizando su frescura y preservando sus propiedades naturales.",
-        "imagen_url": "/productos/langosta-real.jpg",
-        "categoria": "Crustáceos",
-        "talla_minima": "Consultar",
-        "temporada": "Pendiente de consultar",
-        "precio": null,
-        "ficha_tecnica": {
-            "nombre_cientifico": "Panulirus regius",
-            "presentacion": "Piezas enteras, crudas o cocidas, congeladas",
-            "temperatura_conservacion": "−18 °C",
-            "envasado": "Cajas de cartón aluminizado (5-10 kg)",
-            "zona_captura": "Atlántico Centro-Este - Mauritania",
-            "certificacion": "ONISPA"
-        },
-        "descripcion_corta": "Ficha técnica Nombre científico: Panulirus regius Presentación: Piezas enteras, crudas o cocidas, congeladas Temperatura de conservación: −18 °C Envasado: Cajas de cartón aluminizado (5-10 kg) Zona de captura: Atlántico Centro-Este - Mauritania Certificación sanitaria: ONISPA",
-        "descripcion_larga": "La langosta real es una especie bentónica de gran valor comercial, muy apreciada por su carne blanca, firme y de sabor dulce. Habita en los fondos rocosos y coralinos del Atlántico mauritano, a profundidades medias, donde se alimenta de moluscos y pequeños crustáceos. Su carne es muy demandada en los mercados europeos y asiáticos por su textura delicada y su calidad constante. Tras la captura, se clasifica, limpia y congela a −18 °C, garantizando su frescura y preservando sus propiedades naturales."
-    },
-    {
         "id": "lenguado-de-canarias",
         "nombre": "Lenguado de Canarias",
         "origen": "Atlántico Centro-Este - Mauritania / Canarias",
@@ -880,27 +817,6 @@
         },
         "descripcion_corta": "Ficha técnica Nombre científico: Mustelus mustelus Presentación: Piezas enteras, evisceradas y congeladas Temperatura de conservación: −18 °C Envasado: Cajas de cartón aluminizado (10-20 kg) Zona de captura: Atlántico Centro-Este - Mauritania Certificación sanitaria: ONISPA",
         "descripcion_larga": "La musola es una especie demersal costera de la familia de los tiburones, muy común en las aguas del Atlántico mauritano. Se caracteriza por su carne blanca, firme y de sabor suave, muy apreciada por su bajo contenido graso y su textura compacta. Habita en fondos arenosos y fangosos, y se captura de forma controlada para garantizar su calidad. Tras la pesca, se eviscera y congela a −18 °C, conservando toda su frescura y propiedades naturales."
-    },
-    {
-        "id": "paramola",
-        "nombre": "Paramola",
-        "origen": "Atlántico Centro-Este - Mauritania",
-        "descripcion": "La paramola es un cangrejo de profundidad de gran tamaño, muy valorado por su carne blanca, firme y de sabor delicado. Habita en los fondos fangosos y rocosos del Atlántico mauritano, entre 300 y 1 000 metros de profundidad. Es una especie de alto valor comercial, especialmente apreciada por su excelente rendimiento en carne y su calidad constante. Tras la captura, se limpia, clasifica y congela a −18 °C para mantener su frescura y sus propiedades naturales.",
-        "imagen_url": "/productos/paramola-930x620.jpg",
-        "categoria": "Crustáceos",
-        "talla_minima": "Consultar",
-        "temporada": "Pendiente de consultar",
-        "precio": null,
-        "ficha_tecnica": {
-            "nombre_cientifico": "Paramola cuvieri",
-            "presentacion": "Entero o en secciones (pinzas, patas, cuerpo), crudo o cocido, congelado",
-            "temperatura_conservacion": "−18 °C",
-            "envasado": "Cajas de cartón aluminizado (5-10 kg)",
-            "zona_captura": "Atlántico Centro-Este - Mauritania",
-            "certificacion": "ONISPA"
-        },
-        "descripcion_corta": "Ficha técnica Nombre científico: Paramola cuvieri Presentación: Entero o en secciones (pinzas, patas, cuerpo), crudo o cocido, congelado Temperatura de conservación: −18 °C Envasado: Cajas de cartón aluminizado (5-10 kg) Zona de captura: Atlántico Centro-Este - Mauritania Certificación sanitaria: ONISPA",
-        "descripcion_larga": "La paramola es un cangrejo de profundidad de gran tamaño, muy valorado por su carne blanca, firme y de sabor delicado. Habita en los fondos fangosos y rocosos del Atlántico mauritano, entre 300 y 1 000 metros de profundidad. Es una especie de alto valor comercial, especialmente apreciada por su excelente rendimiento en carne y su calidad constante. Tras la captura, se limpia, clasifica y congela a −18 °C para mantener su frescura y sus propiedades naturales."
     },
     {
         "id": "pargo-semola",
