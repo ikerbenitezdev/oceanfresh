@@ -62,9 +62,9 @@ const copyByLocale: Record<Locale, CatalogCopy> = {
     results: (count) => `${count} producto${count === 1 ? "" : "s"} encontrado${count === 1 ? "" : "s"}.`,
     categoryLabels: {
       Pescado: "Pescado",
-      Condroictios: "Condrictios",
-      Crustaceos: "Crustaceos",
-      Cefalopodos: "Cefalopodos",
+      Condrictios: "Condrictios",
+      "Crustáceos": "Crustáceos",
+      "Cefalópodos": "Cefalópodos",
     },
   },
   en: {
@@ -87,9 +87,9 @@ const copyByLocale: Record<Locale, CatalogCopy> = {
     results: (count) => `${count} product${count === 1 ? "" : "s"} found.`,
     categoryLabels: {
       Pescado: "Fish",
-      Condroictios: "Cartilaginous fish",
-      Crustaceos: "Crustaceans",
-      Cefalopodos: "Cephalopods",
+      Condrictios: "Cartilaginous fish",
+      "Crustáceos": "Crustaceans",
+      "Cefalópodos": "Cephalopods",
     },
   },
   fr: {
@@ -112,9 +112,9 @@ const copyByLocale: Record<Locale, CatalogCopy> = {
     results: (count) => `${count} produit${count === 1 ? "" : "s"} trouve${count === 1 ? "" : "s"}.`,
     categoryLabels: {
       Pescado: "Poisson",
-      Condroictios: "Poissons cartilagineux",
-      Crustaceos: "Crustaces",
-      Cefalopodos: "Cephalopodes",
+      Condrictios: "Poissons cartilagineux",
+      "Crustáceos": "Crustaces",
+      "Cefalópodos": "Cephalopodes",
     },
   },
   ar: {
@@ -137,9 +137,9 @@ const copyByLocale: Record<Locale, CatalogCopy> = {
     results: (count) => `تم العثور على ${count} منتج.`,
     categoryLabels: {
       Pescado: "اسماك",
-      Condroictios: "اسماك غضروفية",
-      Crustaceos: "قشريات",
-      Cefalopodos: "رأسيات الارجل",
+      Condrictios: "اسماك غضروفية",
+      "Crustáceos": "قشريات",
+      "Cefalópodos": "رأسيات الارجل",
     },
   },
 };
