@@ -27,6 +27,7 @@ type CatalogCopy = {
   badge: string;
   title: string;
   description: string;
+  downloadCatalog: string;
   searchLabel: string;
   searchPlaceholder: string;
   typeLabel: string;
@@ -47,6 +48,7 @@ const copyByLocale: Record<Locale, CatalogCopy> = {
     title: "Catálogo de Productos",
     description:
       "Todas nuestras especies son seleccionadas en lonja, procesadas en frío y certificadas para exportación. Disponibilidad y calibres a consultar.",
+    downloadCatalog: "Descargar catálogo PDF",
     searchLabel: "Buscar por nombre",
     searchPlaceholder: "Ej. atún, bacalao, pulpo...",
     typeLabel: "Filtrar por tipo",
@@ -72,6 +74,7 @@ const copyByLocale: Record<Locale, CatalogCopy> = {
     title: "Product Catalog",
     description:
       "All species are selected directly at landing ports, processed under cold chain, and certified for export. Availability and sizes on request.",
+    downloadCatalog: "Download PDF catalog",
     searchLabel: "Search by name",
     searchPlaceholder: "Ex. tuna, cod, octopus...",
     typeLabel: "Filter by type",
@@ -97,6 +100,7 @@ const copyByLocale: Record<Locale, CatalogCopy> = {
     title: "Catalogue des Produits",
     description:
       "Toutes nos especes sont selectionnees en criée, traitees sous chaine du froid et certifiees pour l'exportation. Disponibilite et calibres sur demande.",
+    downloadCatalog: "Telecharger le catalogue PDF",
     searchLabel: "Rechercher par nom",
     searchPlaceholder: "Ex. thon, morue, poulpe...",
     typeLabel: "Filtrer par type",
@@ -122,6 +126,7 @@ const copyByLocale: Record<Locale, CatalogCopy> = {
     title: "كتالوج المنتجات",
     description:
       "يتم اختيار جميع الاصناف مباشرة من الموانئ ومعالجتها ضمن سلسلة تبريد معتمدة ومطابقة للتصدير. التوفر والمقاسات حسب الطلب.",
+    downloadCatalog: "تحميل كتالوج PDF",
     searchLabel: "ابحث بالاسم",
     searchPlaceholder: "مثال: تونة، قد، اخطبوط...",
     typeLabel: "تصفية حسب النوع",
@@ -186,6 +191,14 @@ export default function CatalogoClient({ productos }: CatalogoClientProps) {
         <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">
           {t.description}
         </p>
+        <div className="mt-6">
+          <a
+            href="/api/catalogo"
+            className="inline-flex items-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white shadow-sm transition hover:bg-blue-700"
+          >
+            {t.downloadCatalog}
+          </a>
+        </div>
       </div>
 
       <div className="bg-white border border-gray-200 rounded-3xl shadow-sm p-6 md:p-8 mb-12">
