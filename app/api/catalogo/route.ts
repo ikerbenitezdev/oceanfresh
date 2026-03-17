@@ -9,6 +9,7 @@ import {
 } from "pdf-lib";
 import { access, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
+import sharp from "sharp";
 import productos from "@/data/productos.json";
 import { legalInfo } from "@/lib/legal";
 
@@ -30,7 +31,7 @@ const MARGIN = 48;
 const BODY_COLOR = rgb(0.1, 0.13, 0.16);
 const MUTED_COLOR = rgb(0.35, 0.39, 0.45);
 const BRAND_COLOR = rgb(0.06, 0.24, 0.54);
-const SUPPORT_EXTENSIONS = new Set([".jpg", ".jpeg", ".png"]);
+const SUPPORT_EXTENSIONS = new Set([".jpg", ".jpeg", ".jpe", ".png", ".webp"]);
 
 type RgbColor = ReturnType<typeof rgb>;
 
@@ -61,9 +62,19 @@ function sanitizeUrlPath(relativeUrl: string): string {
   return withoutQuery.replace(/^\/+/, "");
 }
 
+function isRemoteImageUrl(url: string): boolean {
+  return /^https?:\/\//i.test(url);
+}
+
 async function resolveProductImagePath(relativeUrl?: string): Promise<string | null> {
   if (!relativeUrl) {
     return null;
+  }
+
+  if (isRemoteImageUrl(relativeUrl)) {
+    const remotePathname = new URL(relativeUrl).pathname;
+    const remoteExt = path.extname(remotePathname).toLowerCase();
+    return SUPPORT_EXTENSIONS.has(remoteExt) ? relativeUrl : null;
   }
 
   const cleanRelativePath = sanitizeUrlPath(relativeUrl);
@@ -107,14 +118,23 @@ async function embedImage(
   }
 
   try {
-    const bytes = await readFile(imagePath);
-    const extension = path.extname(imagePath).toLowerCase();
-    const image =
-      extension === ".png"
-        ? await pdfDoc.embedPng(bytes)
-        : extension === ".jpg" || extension === ".jpeg"
-          ? await pdfDoc.embedJpg(bytes)
-          : null;
+    const isRemote = isRemoteImageUrl(imagePath);
+    const extension = isRemote
+      ? path.extname(new URL(imagePath).pathname).toLowerCase()
+      : path.extname(imagePath).toLowerCase();
+    const bytes = isRemote
+      ? Buffer.from(await (await fetch(imagePath, { cache: "no-store" })).arrayBuffer())
+      : await readFile(imagePath);
+    let image: PDFImage | null = null;
+
+    if (extension === ".png") {
+      image = await pdfDoc.embedPng(bytes);
+    } else if (extension === ".jpg" || extension === ".jpeg" || extension === ".jpe") {
+      image = await pdfDoc.embedJpg(bytes);
+    } else if (extension === ".webp") {
+      const pngBuffer = await sharp(bytes).png().toBuffer();
+      image = await pdfDoc.embedPng(pngBuffer);
+    }
 
     if (!image) {
       return null;
