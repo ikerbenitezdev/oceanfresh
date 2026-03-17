@@ -472,6 +472,110 @@ async function buildCatalogPdf(): Promise<Uint8Array> {
     y = cardY - 16;
   }
 
+  page = addNewPage(pdfDoc);
+  y = PAGE_HEIGHT - MARGIN;
+
+  page.drawRectangle({
+    x: 0,
+    y: PAGE_HEIGHT - 180,
+    width: PAGE_WIDTH,
+    height: 180,
+    color: BRAND_COLOR,
+  });
+
+  page.drawText("Documentacion y certificaciones", {
+    x: MARGIN,
+    y: PAGE_HEIGHT - 74,
+    size: 24,
+    font: bold,
+    color: rgb(1, 1, 1),
+  });
+
+  page.drawText("Compromisos documentales OceanFresh", {
+    x: MARGIN,
+    y: PAGE_HEIGHT - 104,
+    size: 12,
+    font: regular,
+    color: rgb(0.84, 0.91, 1),
+  });
+
+  const onispaLogoPath = toPublicPath("productos", "ONISPA-1-1.png");
+  if (await fileExists(onispaLogoPath)) {
+    const onispaImage = await embedImage(pdfDoc, onispaLogoPath, imageCache);
+    if (onispaImage) {
+      const fittedSeal = fitInside(onispaImage.width, onispaImage.height, 120, 120);
+      page.drawImage(onispaImage, {
+        x: PAGE_WIDTH - MARGIN - fittedSeal.width,
+        y: PAGE_HEIGHT - 150,
+        width: fittedSeal.width,
+        height: fittedSeal.height,
+      });
+    }
+  }
+
+  y = PAGE_HEIGHT - 220;
+  const docsIntro = wrapText(
+    "OceanFresh entrega esta documentacion de exportacion antes del embarque para garantizar seguridad sanitaria, trazabilidad y cumplimiento aduanero.",
+    regular,
+    11,
+    PAGE_WIDTH - MARGIN * 2,
+  );
+
+  for (const line of docsIntro) {
+    page.drawText(line, {
+      x: MARGIN,
+      y,
+      size: 11,
+      font: regular,
+      color: BODY_COLOR,
+    });
+    y -= 16;
+  }
+
+  y -= 8;
+
+  const certifications = [
+    "Certificado de sanidad, origen, trazabilidad y temperatura emitido por ONISPA.",
+    "Certificado de exportacion emitido por SMCP.",
+    "Factura comercial.",
+    "Packing List (Pick Up List).",
+    "BL (Bill of Lading).",
+  ];
+
+  for (const item of certifications) {
+    const bulletLines = wrapText(`- ${item}`, regular, 11, PAGE_WIDTH - MARGIN * 2 - 8);
+    for (const line of bulletLines) {
+      page.drawText(line, {
+        x: MARGIN + 6,
+        y,
+        size: 11,
+        font: regular,
+        color: BODY_COLOR,
+      });
+      y -= 16;
+    }
+    y -= 4;
+  }
+
+  y -= 6;
+  const finalNote = wrapText(
+    "Todos los documentos anteriores son preparados y remitidos por OceanFresh para cada operacion internacional.",
+    bold,
+    10,
+    PAGE_WIDTH - MARGIN * 2,
+  );
+
+  for (const line of finalNote) {
+    page.drawText(line, {
+      x: MARGIN,
+      y,
+      size: 10,
+      font: bold,
+      color: BRAND_COLOR,
+    });
+    y -= 14;
+  }
+
   const pages = pdfDoc.getPages();
   pages.forEach((item, idx) => {
     item.drawText(`OceanFresh | Pagina ${idx + 1} de ${pages.length}`, {
