@@ -10,4 +10,4 @@ export const legalInfo = {
 };
 
 export const legalPlaceholderNotice =
-  "Informacion legal verificada y actualizada por el titular del sitio.";
+  "Información legal verificada y actualizada por el titular del sitio.";

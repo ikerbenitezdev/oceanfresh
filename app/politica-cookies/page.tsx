@@ -2,24 +2,24 @@ import type { Metadata } from "next";
 import { legalInfo, legalPlaceholderNotice } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Politica de cookies | OceanFresh",
-  description: "Informacion sobre las cookies tecnicas y de preferencia utilizadas por el sitio web.",
+  title: "Política de cookies | OceanFresh",
+  description: "Información sobre las cookies técnicas y de preferencia utilizadas por el sitio web.",
 };
 
 export default function PoliticaCookiesPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-gray-900">
-      <h1 className="text-4xl font-extrabold">Politica de cookies</h1>
+      <h1 className="text-4xl font-extrabold">Política de cookies</h1>
       <div className="mt-6 rounded-2xl border border-amber-300 bg-amber-50 px-5 py-4 text-sm text-amber-900">
         {legalPlaceholderNotice}
       </div>
 
       <div className="mt-10 space-y-10">
         <section>
-          <h2 className="text-2xl font-bold">1. Que son las cookies</h2>
+          <h2 className="text-2xl font-bold">1. Qué son las cookies</h2>
           <p className="mt-4 text-gray-700 leading-relaxed">
-            Las cookies son pequenos archivos que el sitio web almacena en tu dispositivo para recordar informacion sobre tu visita,
-            como preferencias o ajustes tecnicos necesarios para el funcionamiento de la web.
+            Las cookies son pequeños archivos que el sitio web almacena en tu dispositivo para recordar información sobre tu visita,
+            como preferencias o ajustes técnicos necesarios para el funcionamiento de la web.
           </p>
         </section>
 
@@ -32,7 +32,7 @@ export default function PoliticaCookiesPage() {
                   <th className="px-4 py-3 font-semibold">Nombre</th>
                   <th className="px-4 py-3 font-semibold">Tipo</th>
                   <th className="px-4 py-3 font-semibold">Finalidad</th>
-                  <th className="px-4 py-3 font-semibold">Duracion</th>
+                  <th className="px-4 py-3 font-semibold">Duración</th>
                 </tr>
               </thead>
               <tbody className="text-gray-700">
@@ -44,7 +44,7 @@ export default function PoliticaCookiesPage() {
                 </tr>
                 <tr className="border-t border-gray-100">
                   <td className="px-4 py-3">cookie_notice_closed</td>
-                  <td className="px-4 py-3">Tecnica</td>
+                  <td className="px-4 py-3">Técnica</td>
                   <td className="px-4 py-3">Recordar que el usuario ya ha visto el aviso informativo de cookies.</td>
                   <td className="px-4 py-3">12 meses</td>
                 </tr>
@@ -54,16 +54,16 @@ export default function PoliticaCookiesPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold">3. Cookies analiticas o publicitarias</h2>
+          <h2 className="text-2xl font-bold">3. Cookies analíticas o publicitarias</h2>
           <p className="mt-4 text-gray-700 leading-relaxed">
-            En este momento, la web no utiliza cookies analiticas, publicitarias ni de perfiles de terceros. Si en el futuro se incorporan herramientas como Google Analytics, Meta Pixel u otras cookies no esenciales, se implementara un sistema de consentimiento previo antes de activarlas.
+            En este momento, la web no utiliza cookies analíticas, publicitarias ni de perfiles de terceros. Si en el futuro se incorporan herramientas como Google Analytics, Meta Pixel u otras cookies no esenciales, se implementará un sistema de consentimiento previo antes de activarlas.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold">4. Como desactivar o eliminar cookies</h2>
+          <h2 className="text-2xl font-bold">4. Cómo desactivar o eliminar cookies</h2>
           <p className="mt-4 text-gray-700 leading-relaxed">
-            Puedes configurar tu navegador para bloquear o eliminar cookies. Ten en cuenta que, si desactivas cookies tecnicas o de preferencia, algunas funciones del sitio pueden no comportarse como se espera.
+            Puedes configurar tu navegador para bloquear o eliminar cookies. Ten en cuenta que, si desactivas cookies técnicas o de preferencia, algunas funciones del sitio pueden no comportarse como se espera.
           </p>
         </section>
 
@@ -74,7 +74,7 @@ export default function PoliticaCookiesPage() {
           </p>
         </section>
 
-        <p className="text-sm text-gray-500">Ultima actualizacion: {legalInfo.lastUpdated}</p>
+        <p className="text-sm text-gray-500">Última actualización: {legalInfo.lastUpdated}</p>
       </div>
     </div>
   );

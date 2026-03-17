@@ -20,9 +20,9 @@ const copyByLocale: Record<Locale, CookieCopy> = {
   es: {
     title: "Uso de cookies",
     description:
-      "Esta web solo utiliza cookies tecnicas y de preferencia, como la cookie de idioma. No usamos cookies publicitarias ni analiticas en este momento.",
+      "Esta web solo utiliza cookies técnicas y de preferencia, como la cookie de idioma. No usamos cookies publicitarias ni analíticas en este momento.",
     legalLink: "Aviso legal",
-    cookiesLink: "Politica de cookies",
+    cookiesLink: "Política de cookies",
     privacyLink: "Privacidad",
     button: "Entendido",
   },

@@ -3,7 +3,7 @@ import { legalInfo, legalPlaceholderNotice } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Aviso legal | OceanFresh",
-  description: "Informacion legal del titular del sitio, condiciones de uso y responsabilidades.",
+  description: "Información legal del titular del sitio, condiciones de uso y responsabilidades.",
 };
 
 export default function AvisoLegalPage() {
@@ -16,13 +16,13 @@ export default function AvisoLegalPage() {
 
       <div className="mt-10 space-y-10">
         <section>
-          <h2 className="text-2xl font-bold">1. Identificacion del titular</h2>
+          <h2 className="text-2xl font-bold">1. Identificación del titular</h2>
           <div className="mt-4 grid gap-3 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:grid-cols-2">
             <p><span className="font-semibold">Nombre comercial:</span> {legalInfo.tradeName}</p>
             <p><span className="font-semibold">Titular:</span> {legalInfo.ownerName}</p>
             <p><span className="font-semibold">NIF/CIF:</span> {legalInfo.taxId}</p>
             <p><span className="font-semibold">Email:</span> {legalInfo.email}</p>
-            <p><span className="font-semibold">Telefono:</span> {legalInfo.phone}</p>
+            <p><span className="font-semibold">Teléfono:</span> {legalInfo.phone}</p>
             <p><span className="font-semibold">Registro mercantil:</span> {legalInfo.registry}</p>
             <p className="sm:col-span-2"><span className="font-semibold">Domicilio:</span> {legalInfo.address}</p>
           </div>
@@ -31,24 +31,24 @@ export default function AvisoLegalPage() {
         <section>
           <h2 className="text-2xl font-bold">2. Objeto</h2>
           <p className="mt-4 text-gray-700 leading-relaxed">
-            Este sitio web tiene por objeto ofrecer informacion comercial sobre productos del mar,
-            exportacion, contacto con clientes profesionales y presentacion de los servicios de OceanFresh.
+            Este sitio web tiene por objeto ofrecer información comercial sobre productos del mar,
+            exportación, contacto con clientes profesionales y presentación de los servicios de OceanFresh.
           </p>
         </section>
 
         <section>
           <h2 className="text-2xl font-bold">3. Condiciones de uso</h2>
           <p className="mt-4 text-gray-700 leading-relaxed">
-            El acceso a esta web atribuye la condicion de usuario e implica la aceptacion de las presentes condiciones.
-            El usuario se compromete a hacer un uso licito del sitio, de sus contenidos y de los formularios de contacto.
+            El acceso a esta web atribuye la condición de usuario e implica la aceptación de las presentes condiciones.
+            El usuario se compromete a hacer un uso lícito del sitio, de sus contenidos y de los formularios de contacto.
           </p>
         </section>
 
         <section>
           <h2 className="text-2xl font-bold">4. Propiedad intelectual e industrial</h2>
           <p className="mt-4 text-gray-700 leading-relaxed">
-            Los textos, imagenes, logotipos, disenos, estructura y contenidos del sitio son titularidad del responsable
-            o se utilizan con autorizacion. Queda prohibida su reproduccion, distribucion o transformacion sin permiso previo,
+            Los textos, imágenes, logotipos, diseños, estructura y contenidos del sitio son titularidad del responsable
+            o se utilizan con autorización. Queda prohibida su reproducción, distribución o transformación sin permiso previo,
             salvo los usos permitidos legalmente.
           </p>
         </section>
@@ -57,20 +57,20 @@ export default function AvisoLegalPage() {
           <h2 className="text-2xl font-bold">5. Responsabilidad</h2>
           <p className="mt-4 text-gray-700 leading-relaxed">
             El titular no se hace responsable del mal uso del sitio por parte de terceros ni de posibles interrupciones,
-            errores tecnicos o enlaces externos fuera de su control. Se adoptaran, no obstante, las medidas razonables para
+            errores técnicos o enlaces externos fuera de su control. Se adoptarán, no obstante, las medidas razonables para
             asegurar el correcto funcionamiento de la web.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold">6. Legislacion aplicable</h2>
+          <h2 className="text-2xl font-bold">6. Legislación aplicable</h2>
           <p className="mt-4 text-gray-700 leading-relaxed">
-            Este aviso legal se rige por la normativa aplicable en Espana y, en su caso, por la normativa europea de aplicacion.
-            Para cualquier controversia, las partes se someteran a los juzgados y tribunales que correspondan conforme a derecho.
+            Este aviso legal se rige por la normativa aplicable en España y, en su caso, por la normativa europea de aplicación.
+            Para cualquier controversia, las partes se someterán a los juzgados y tribunales que correspondan conforme a derecho.
           </p>
         </section>
 
-        <p className="text-sm text-gray-500">Ultima actualizacion: {legalInfo.lastUpdated}</p>
+        <p className="text-sm text-gray-500">Última actualización: {legalInfo.lastUpdated}</p>
       </div>
     </div>
   );

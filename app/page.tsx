@@ -45,33 +45,33 @@ type HomeCopy = {
 
 const homeCopy: Record<Locale, HomeCopy> = {
   es: {
-    heroBadge: "Importacion directa • Banco Pesquero de Mauritania",
+    heroBadge: "Importación directa • Banco Pesquero de Mauritania",
     heroTitleStart: "Exportamos calidad, desde las aguas de",
     heroTitleAccent: "Mauritania al mundo",
     heroDescription:
-      "Pescado fresco y congelado de alta calidad procedente directamente del caladero mas rico del oceano Atlantico.",
-    heroCatalogButton: "Ver Catalogo",
+      "Pescado fresco y congelado de alta calidad procedente directamente del caladero más rico del océano Atlántico.",
+    heroCatalogButton: "Ver Catálogo",
     heroLicenseButton: "Obtener Licencia",
     stats: [
       { value: "+65", label: "Especies disponibles" },
       { value: "48h", label: "Del mar a la lonja" },
       { value: "100%", label: "Trazabilidad certificada" },
-      { value: "+20", label: "Paises de exportacion" },
+      { value: "+20", label: "Países de exportación" },
     ],
-    certBadge: "Garantias de calidad",
+    certBadge: "Garantías de calidad",
     certTitle: "Certificado y Trazable",
     certDescription:
       "Todo nuestro pescado es inspeccionado y certificado por ONISPA, organismo oficial de Mauritania para el control sanitario pesquero.",
     certCards: [
       {
         icon: "🇪🇺",
-        title: "Valido para exportacion a Europa",
-        desc: "Certificados sanitarios reconocidos por la Union Europea para importacion de productos pesqueros.",
+        title: "Válido para exportación a Europa",
+        desc: "Certificados sanitarios reconocidos por la Unión Europea para importación de productos pesqueros.",
       },
       {
         icon: "🔍",
-        title: "Inspeccion en origen - ONISPA",
-        desc: "Cada lote se inspecciona fisicamente en lonja antes de ser autorizado para exportacion.",
+        title: "Inspección en origen - ONISPA",
+        desc: "Cada lote se inspecciona físicamente en lonja antes de ser autorizado para exportación.",
       },
       {
         icon: "📦",
@@ -79,27 +79,27 @@ const homeCopy: Record<Locale, HomeCopy> = {
         desc: "Controla y valida todas las exportaciones de pescado.Verifica que el producto cumple condiciones comerciales. Supervisa documentación de exportación ",
       },
     ],
-    certCtaTitle: "Necesitas certificados para tu importacion?",
-    certCtaDesc: "Enviamos certificado ONISPA, EUR.1 y declaracion de origen.",
-    certCtaButton: "Solicitar documentacion",
+    certCtaTitle: "¿Necesitas certificados para tu importación?",
+    certCtaDesc: "Enviamos certificado ONISPA, EUR.1 y declaración de origen.",
+    certCtaButton: "Solicitar documentación",
     companyBadge: "Nuestra empresa",
-    companyTitle: "Quienes Somos",
-    missionTitle: "Nuestra Mision",
+    companyTitle: "Quiénes Somos",
+    missionTitle: "Nuestra Misión",
     missionDescription:
       "Conectar la riqueza del banco pesquero de Mauritania con los mercados internacionales, garantizando frescura y sostenibilidad desde origen hasta destino.",
     valueTitle: "Nuestro Valor Diferencial",
     valueItems: [
-      "Seleccion en lonja directamente en el punto de descarga.",
-      "Cadena de frio certificada de +2 C a -18 C desde el barco.",
-      "Exportacion directa sin intermediarios innecesarios.",
-      "Documentacion EUR1 y certificados sanitarios incluidos.",
+      "Selección en lonja directamente en el punto de descarga.",
+      "Cadena de frío certificada de +2 C a -18 C desde el barco.",
+      "Exportación directa sin intermediarios innecesarios.",
+      "Documentación EUR1 y certificados sanitarios incluidos.",
     ],
     contactUs: "Contacta con nosotros",
-    catalogBadge: "Lo mas solicitado",
-    catalogTitle: "Nuestro Catalogo",
+    catalogBadge: "Lo más solicitado",
+    catalogTitle: "Nuestro Catálogo",
     catalogDescription:
-      "Especies seleccionadas directamente en los puertos mauritanos con maxima frescura y control de calidad.",
-    fullCatalog: "Ver catalogo completo",
+      "Especies seleccionadas directamente en los puertos mauritanos con máxima frescura y control de calidad.",
+    fullCatalog: "Ver catálogo completo",
   },
   en: {
     heroBadge: "Direct import • Mauritania Fishing Bank",
@@ -277,7 +277,7 @@ const certDocumentsEs = [
   {
     title: "1. Certificado sanitario ONISPA",
     items: [
-      "Demuestra que el pescado esta en condiciones de entrar a la UE.",
+      "Demuestra que el pescado está en condiciones de entrar a la UE.",
       "Emitido y sellado por ONISPA.",
     ],
   },
@@ -285,27 +285,27 @@ const certDocumentsEs = [
     title: "2. Certificado de origen",
     items: [
       "Demuestra que el pescado es de Mauritania.",
-      "Emitido por la Camara de Comercio.",
+      "Emitido por la Cámara de Comercio.",
     ],
   },
   {
     title: "3. Certificado de trazabilidad / captura",
     items: [
       "Indica barco, zona FAO, fecha de pesca y lotes.",
-      "Emitido por ONISPA o autoridad maritima.",
+      "Emitido por ONISPA o autoridad marítima.",
     ],
   },
   {
-    title: "4. Certificado de temperatura / congelacion",
+    title: "4. Certificado de temperatura / congelación",
     items: [
-      "Asegura que la cadena de frio se mantuvo (-18 C o menos).",
+      "Asegura que la cadena de frío se mantuvo (-18 C o menos).",
       "Emitido por la planta exportadora y validado por ONISPA.",
     ],
   },
   {
-    title: "5. Documento SMCP (validacion de exportacion)",
+    title: "5. Documento SMCP (validación de exportación)",
     items: [
-      "Autoriza la exportacion y controla valores.",
+      "Autoriza la exportación y controla valores.",
       "Emitido por SMCP.",
     ],
   },
@@ -318,13 +318,13 @@ const certDocumentsEs = [
   {
     title: "7. Packing List",
     items: [
-      "Detalla numero de cajas, pesos, lotes y tipo de embalaje.",
+      "Detalla número de cajas, pesos, lotes y tipo de embalaje.",
     ],
   },
   {
     title: "8. Bill of Lading (BL) o Air Waybill",
     items: [
-      "Documento de transporte que demuestra que la mercancia esta en el barco o avion.",
+      "Documento de transporte que demuestra que la mercancía está en el barco o avión.",
     ],
   },
 ];

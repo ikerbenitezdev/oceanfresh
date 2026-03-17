@@ -26,11 +26,11 @@ const copyByLocale: Record<
 > = {
   es: {
     home: "Inicio",
-    catalog: "Catalogo",
-    about: "Quienes Somos",
+    catalog: "Catálogo",
+    about: "Quiénes Somos",
     contact: "Contacto",
     language: "Idioma",
-    menu: "Abrir menu",
+    menu: "Abrir menú",
   },
   en: {
     home: "Home",

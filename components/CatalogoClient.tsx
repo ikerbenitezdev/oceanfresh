@@ -43,21 +43,21 @@ type CatalogCopy = {
 
 const copyByLocale: Record<Locale, CatalogCopy> = {
   es: {
-    badge: "Importacion directa",
-    title: "Catalogo de Productos",
+    badge: "Importación directa",
+    title: "Catálogo de Productos",
     description:
-      "Todas nuestras especies son seleccionadas en lonja, procesadas en frio y certificadas para exportacion. Disponibilidad y calibres a consultar.",
+      "Todas nuestras especies son seleccionadas en lonja, procesadas en frío y certificadas para exportación. Disponibilidad y calibres a consultar.",
     searchLabel: "Buscar por nombre",
-    searchPlaceholder: "Ej. atun, bacalao, pulpo...",
+    searchPlaceholder: "Ej. atún, bacalao, pulpo...",
     typeLabel: "Filtrar por tipo",
     all: "Todos",
     noResultsTitle: "No hay resultados",
     noResultsDescription:
-      "No hemos encontrado productos con ese nombre o dentro de ese tipo. Prueba con otra busqueda o vuelve a la categoria Todos.",
-    ctaTitle: "No encuentras lo que buscas?",
+      "No hemos encontrado productos con ese nombre o dentro de ese tipo. Prueba con otra búsqueda o vuelve a la categoría Todos.",
+    ctaTitle: "¿No encuentras lo que buscas?",
     ctaDescription:
-      "Trabajamos con mas de 15 especies. Contactanos y te enviaremos la lista completa con disponibilidad y precios.",
-    ctaButton: "Solicitar informacion",
+      "Trabajamos con más de 15 especies. Contáctanos y te enviaremos la lista completa con disponibilidad y precios.",
+    ctaButton: "Solicitar información",
     season: "Temporada",
     results: (count) => `${count} producto${count === 1 ? "" : "s"} encontrado${count === 1 ? "" : "s"}.`,
     categoryLabels: {

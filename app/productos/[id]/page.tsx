@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import productos from "@/data/productos.json";
 
@@ -7,17 +8,59 @@ interface Props {
   params: Promise<{ id: string }>;
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://oceanfresh.es";
+
+function absoluteImageUrl(imageUrl: string): string {
+  if (imageUrl.startsWith("http://") || imageUrl.startsWith("https://")) {
+    return imageUrl;
+  }
+
+  return `${siteUrl}${imageUrl.startsWith("/") ? imageUrl : `/${imageUrl}`}`;
+}
+
 export async function generateStaticParams() {
   return productos.map((p) => ({ id: p.id }));
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const producto = productos.find((p) => p.id === id);
   if (!producto) return {};
+
+  const canonicalPath = `/productos/${producto.id}`;
+  const seoDescription = producto.descripcion.slice(0, 160);
+
   return {
     title: `${producto.nombre} | OceanFresh`,
-    description: producto.descripcion.slice(0, 160),
+    description: seoDescription,
+    keywords: [
+      producto.nombre,
+      producto.categoria,
+      "importacion de pescado",
+      "pescado congelado mauritania",
+      "proveedor pescado mayorista",
+    ],
+    alternates: {
+      canonical: canonicalPath,
+    },
+    openGraph: {
+      title: `${producto.nombre} | OceanFresh`,
+      description: seoDescription,
+      url: canonicalPath,
+      type: "article",
+      images: [
+        {
+          url: producto.imagen_url,
+          alt: producto.nombre,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${producto.nombre} | OceanFresh`,
+      description: seoDescription,
+      images: [producto.imagen_url],
+    },
   };
 }
 
@@ -28,9 +71,26 @@ export default async function ProductoDetalle({ params }: Props) {
   if (!producto) notFound();
 
   const relacionados = productos.filter((p) => p.id !== producto.id).slice(0, 3);
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: producto.nombre,
+    description: producto.descripcion,
+    category: producto.categoria,
+    image: [absoluteImageUrl(producto.imagen_url)],
+    brand: {
+      "@type": "Brand",
+      name: "OceanFresh",
+    },
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-8 flex items-center gap-2">
         <Link href="/" className="hover:text-blue-600 transition-colors">

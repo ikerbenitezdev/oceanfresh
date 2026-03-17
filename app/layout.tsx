@@ -3,6 +3,7 @@ import "./globals.css";
 import CookieNotice from "../components/CookieNotice";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
+import { legalInfo } from "@/lib/legal";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://oceanfresh.es";
 
@@ -13,7 +14,15 @@ const organizationJsonLd = {
   url: siteUrl,
   logo: `${siteUrl}/logo.jpeg`,
   description:
-    "Importacion directa de pescado fresco y congelado desde Mauritania para distribuidores y canal HORECA.",
+    "Importación directa de pescado fresco y congelado desde Mauritania para distribuidores y canal HORECA.",
+  email: legalInfo.email,
+  telephone: legalInfo.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: legalInfo.address,
+    addressCountry: "MR",
+  },
+  areaServed: ["ES", "EU", "MA", "MR"],
 };
 
 const websiteJsonLd = {
@@ -22,20 +31,31 @@ const websiteJsonLd = {
   name: "OceanFresh",
   url: siteUrl,
   inLanguage: "es",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteUrl}/productos`,
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "OceanFresh | Importacion de Pescado desde Mauritania",
+    default: "OceanFresh | Importación de Pescado desde Mauritania",
     template: "%s | OceanFresh",
   },
   description:
-    "Importacion directa de pescado fresco y congelado desde el Banco Pesquero de Mauritania. Calidad premium, cadena de frio certificada y exportacion sin intermediarios.",
+    "Importación directa de pescado fresco y congelado desde el Banco Pesquero de Mauritania. Calidad premium, cadena de frío certificada y exportación sin intermediarios.",
   keywords: [
-    "importacion de pescado",
+    "importación de pescado",
     "pescado mauritania",
-    "exportacion pescado congelado",
+    "exportación pescado congelado",
+    "proveedor de pescado en españa",
+    "mayorista de pescado congelado",
+    "comprar pescado para hostelería",
+    "pescado para restauración",
+    "marisco congelado mauritania",
+    "distribuidor pescado horeca",
     "proveedor pescado mayorista",
     "pescado para horeca",
     "oceanfresh",
@@ -60,35 +80,36 @@ export const metadata: Metadata = {
     locale: "es_ES",
     url: "/",
     siteName: "OceanFresh",
-    title: "OceanFresh | Importacion de Pescado desde Mauritania",
+    title: "OceanFresh | Importación de Pescado desde Mauritania",
     description:
-      "Importacion directa de pescado fresco y congelado desde Mauritania con trazabilidad certificada.",
+      "Importación directa de pescado fresco y congelado desde Mauritania con trazabilidad certificada.",
     images: [
       {
         url: "/fondo.webp",
         width: 1200,
         height: 630,
-        alt: "OceanFresh - Importacion de pescado",
+        alt: "OceanFresh - Importación de pescado",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OceanFresh | Importacion de Pescado desde Mauritania",
+    title: "OceanFresh | Importación de Pescado desde Mauritania",
     description:
-      "Importacion directa de pescado fresco y congelado desde Mauritania con trazabilidad certificada.",
+      "Importación directa de pescado fresco y congelado desde Mauritania con trazabilidad certificada.",
     images: ["/fondo.webp"],
   },
   icons: {
-    icon: "/logo.jpeg",
+    icon: "/logo.ico",
     apple: "/logo.jpeg",
-    shortcut: "/logo.jpeg",
+    shortcut: "/logo.ico",
   },
   applicationName: "OceanFresh",
   category: "food",
   authors: [{ name: "OceanFresh", url: siteUrl }],
   creator: "OceanFresh",
   publisher: "OceanFresh",
+  referrer: "origin-when-cross-origin",
   formatDetection: {
     email: false,
     address: false,

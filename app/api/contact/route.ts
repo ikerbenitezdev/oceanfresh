@@ -74,7 +74,7 @@ export async function POST(request: Request) {
         "",
         `Nombre: ${nombre}`,
         `Email: ${email}`,
-        `Pais: ${pais}`,
+        `País: ${pais}`,
         `Empresa: ${empresa || "No indicada"}`,
         `Idioma: ${locale}`,
         "",
@@ -86,7 +86,7 @@ export async function POST(request: Request) {
           <h2 style="margin: 0 0 16px;">Nuevo mensaje de contacto</h2>
           <p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p>
           <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-          <p><strong>Pais:</strong> ${escapeHtml(pais)}</p>
+          <p><strong>País:</strong> ${escapeHtml(pais)}</p>
           <p><strong>Empresa:</strong> ${escapeHtml(empresa || "No indicada")}</p>
           <p><strong>Idioma:</strong> ${escapeHtml(locale)}</p>
           <p><strong>Mensaje:</strong></p>
