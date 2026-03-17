@@ -256,15 +256,20 @@ export default function ContactoClient() {
       });
 
       if (!response.ok) {
-        throw new Error("request_failed");
+        const body = (await response.json().catch(() => null)) as { error?: string } | null;
+        const serverError = body?.error?.trim();
+        throw new Error(serverError || "request_failed");
       }
 
       form.reset();
       setSubmitStatus("success");
       setSubmitMessage(t.submitSuccess);
-    } catch {
+    } catch (error) {
       setSubmitStatus("error");
-      setSubmitMessage(t.submitError);
+      const detail = error instanceof Error ? error.message : "";
+      setSubmitMessage(
+        detail && detail !== "request_failed" ? `${t.submitError} (${detail})` : t.submitError,
+      );
     } finally {
       setIsSending(false);
     }
