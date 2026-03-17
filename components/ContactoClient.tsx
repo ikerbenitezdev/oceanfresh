@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { getDirection, type Locale } from "@/lib/locale";
 import { useLocale } from "@/lib/locale-client";
@@ -16,6 +17,10 @@ type ContactCopy = {
   consentPrefix: string;
   privacyPolicyLabel: string;
   send: string;
+  sending: string;
+  submitSuccess: string;
+  submitError: string;
+  requiredFieldsError: string;
   policy: string;
   contactInfo: string;
   emailTitle: string;
@@ -50,6 +55,10 @@ const copyByLocale: Record<Locale, ContactCopy> = {
     consentPrefix: "He leido y acepto la",
     privacyPolicyLabel: "Politica de privacidad",
     send: "Enviar mensaje",
+    sending: "Enviando...",
+    submitSuccess: "Mensaje enviado correctamente. Te responderemos en menos de 24 horas.",
+    submitError: "No se pudo enviar el mensaje. Intentalo de nuevo en unos minutos.",
+    requiredFieldsError: "Completa los campos obligatorios antes de enviar.",
     policy:
       "Al enviar este formulario, aceptas nuestra politica de privacidad. Tus datos nunca seran cedidos a terceros.",
     contactInfo: "Informacion de contacto",
@@ -89,6 +98,10 @@ const copyByLocale: Record<Locale, ContactCopy> = {
     consentPrefix: "I have read and accept the",
     privacyPolicyLabel: "Privacy Policy",
     send: "Send message",
+    sending: "Sending...",
+    submitSuccess: "Message sent successfully. We will reply within 24 hours.",
+    submitError: "Message could not be sent. Please try again in a few minutes.",
+    requiredFieldsError: "Please complete the required fields before sending.",
     policy:
       "By submitting this form, you accept our privacy policy. Your data will never be shared with third parties.",
     contactInfo: "Contact information",
@@ -128,6 +141,10 @@ const copyByLocale: Record<Locale, ContactCopy> = {
     consentPrefix: "J'ai lu et j'accepte la",
     privacyPolicyLabel: "Politique de confidentialite",
     send: "Envoyer le message",
+    sending: "Envoi en cours...",
+    submitSuccess: "Message envoye avec succes. Nous repondrons sous 24 heures.",
+    submitError: "Impossible d'envoyer le message. Veuillez reessayer dans quelques minutes.",
+    requiredFieldsError: "Veuillez completer les champs obligatoires avant l'envoi.",
     policy:
       "En envoyant ce formulaire, vous acceptez notre politique de confidentialite. Vos donnees ne seront jamais cedees a des tiers.",
     contactInfo: "Informations de contact",
@@ -167,6 +184,10 @@ const copyByLocale: Record<Locale, ContactCopy> = {
     consentPrefix: "لقد قرات ووافقت على",
     privacyPolicyLabel: "سياسة الخصوصية",
     send: "ارسال الرسالة",
+    sending: "جار الارسال...",
+    submitSuccess: "تم ارسال الرسالة بنجاح. سنرد خلال 24 ساعة.",
+    submitError: "تعذر ارسال الرسالة. حاول مرة اخرى خلال بضع دقائق.",
+    requiredFieldsError: "يرجى اكمال الحقول المطلوبة قبل الارسال.",
     policy:
       "عند ارسال هذا النموذج فانك توافق على سياسة الخصوصية. لن تتم مشاركة بياناتك مع اي طرف ثالث.",
     contactInfo: "معلومات الاتصال",
@@ -199,6 +220,55 @@ export default function ContactoClient() {
   const locale = useLocale();
   const t = copyByLocale[locale];
   const dir = getDirection(locale);
+  const [isSending, setIsSending] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      nombre: String(formData.get("nombre") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+      pais: String(formData.get("pais") ?? "").trim(),
+      empresa: String(formData.get("empresa") ?? "").trim(),
+      mensaje: String(formData.get("mensaje") ?? "").trim(),
+      locale,
+    };
+
+    if (!payload.nombre || !payload.email || !payload.pais || !payload.mensaje) {
+      setSubmitStatus("error");
+      setSubmitMessage(t.requiredFieldsError);
+      return;
+    }
+
+    setIsSending(true);
+    setSubmitStatus("idle");
+    setSubmitMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("request_failed");
+      }
+
+      form.reset();
+      setSubmitStatus("success");
+      setSubmitMessage(t.submitSuccess);
+    } catch {
+      setSubmitStatus("error");
+      setSubmitMessage(t.submitError);
+    } finally {
+      setIsSending(false);
+    }
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" dir={dir}>
@@ -212,7 +282,10 @@ export default function ContactoClient() {
 
       <div className="grid lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2">
-          <form className="bg-white rounded-2xl shadow-md border border-gray-100 p-8 space-y-6">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white rounded-2xl shadow-md border border-gray-100 p-8 space-y-6"
+          >
             <div className="grid sm:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="nombre" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -300,10 +373,21 @@ export default function ContactoClient() {
 
             <button
               type="submit"
+              disabled={isSending}
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl text-lg transition-colors shadow-md"
             >
-              {t.send}
+              {isSending ? t.sending : t.send}
             </button>
+
+            {submitStatus !== "idle" && (
+              <p
+                className={`text-sm text-center ${
+                  submitStatus === "success" ? "text-emerald-700" : "text-red-600"
+                }`}
+              >
+                {submitMessage}
+              </p>
+            )}
 
             <p className="text-xs text-gray-400 text-center">{t.policy}</p>
           </form>
