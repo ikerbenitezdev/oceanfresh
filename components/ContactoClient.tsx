@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { getDirection, type Locale } from "@/lib/locale";
 import { useLocale } from "@/lib/locale-client";
+import { legalInfo } from "@/lib/legal";
 
 type ContactCopy = {
   badge: string;
@@ -406,14 +407,14 @@ export default function ContactoClient() {
                 <span className="text-blue-300 text-lg mt-0.5">📧</span>
                 <div>
                   <p className="font-semibold text-white">{t.emailTitle}</p>
-                  <p>info@oceanfresh.com</p>
+                    <p>{legalInfo.email}</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-300 text-lg mt-0.5">📞</span>
                 <div>
                   <p className="font-semibold text-white">{t.phoneTitle}</p>
-                  <p>+34 600 000 000</p>
+                    <p>{legalInfo.phone}</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
