@@ -75,8 +75,8 @@ const homeCopy: Record<Locale, HomeCopy> = {
       },
       {
         icon: "📦",
-        title: "Trazabilidad del mar a la exportacion",
-        desc: "Registro completo de barco, zona de captura, fecha, frio y lote para cada envio.",
+        title: "SMCP (Sociedad Mauritana de Comercialización de Pescados)",
+        desc: "Controla y valida todas las exportaciones de pescado.Verifica que el producto cumple condiciones comerciales. Supervisa documentación de exportación ",
       },
     ],
     certCtaTitle: "Necesitas certificados para tu importacion?",
@@ -273,11 +273,69 @@ const homeCopy: Record<Locale, HomeCopy> = {
   },
 };
 
+const certDocumentsEs = [
+  {
+    title: "1. Certificado sanitario ONISPA",
+    items: [
+      "Demuestra que el pescado esta en condiciones de entrar a la UE.",
+      "Emitido y sellado por ONISPA.",
+    ],
+  },
+  {
+    title: "2. Certificado de origen",
+    items: [
+      "Demuestra que el pescado es de Mauritania.",
+      "Emitido por la Camara de Comercio.",
+    ],
+  },
+  {
+    title: "3. Certificado de trazabilidad / captura",
+    items: [
+      "Indica barco, zona FAO, fecha de pesca y lotes.",
+      "Emitido por ONISPA o autoridad maritima.",
+    ],
+  },
+  {
+    title: "4. Certificado de temperatura / congelacion",
+    items: [
+      "Asegura que la cadena de frio se mantuvo (-18 C o menos).",
+      "Emitido por la planta exportadora y validado por ONISPA.",
+    ],
+  },
+  {
+    title: "5. Documento SMCP (validacion de exportacion)",
+    items: [
+      "Autoriza la exportacion y controla valores.",
+      "Emitido por SMCP.",
+    ],
+  },
+  {
+    title: "6. Factura comercial",
+    items: [
+      "Incluye tu empresa, comprador, cantidad, precio y condiciones de venta (Incoterms).",
+    ],
+  },
+  {
+    title: "7. Packing List",
+    items: [
+      "Detalla numero de cajas, pesos, lotes y tipo de embalaje.",
+    ],
+  },
+  {
+    title: "8. Bill of Lading (BL) o Air Waybill",
+    items: [
+      "Documento de transporte que demuestra que la mercancia esta en el barco o avion.",
+    ],
+  },
+];
+
 export default function Home() {
   const locale = useLocale();
   const t = homeCopy[locale];
   const dir = getDirection(locale);
   const preview = productos.slice(0, 3);
+  const certDescParts = t.certCtaDesc.split("EUR.1");
+  const certDescHasEur1 = certDescParts.length === 2;
 
   return (
     <div dir={dir}>
@@ -411,24 +469,57 @@ export default function Home() {
           </div>
 
           <motion.div
-            className="mt-12 bg-blue-900 rounded-2xl px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-6 text-white"
+            className="mt-12 bg-blue-900 rounded-3xl p-6 md:p-8 text-white border border-blue-700 shadow-xl"
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <div>
-              <p className="font-bold text-lg">{t.certCtaTitle}</p>
-              <p className="text-blue-200 text-sm mt-1">
-                {t.certCtaDesc}
-              </p>
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div className="max-w-3xl">
+                <p className="font-bold text-xl">{t.certCtaTitle}</p>
+                <p className="text-blue-200 text-sm md:text-base mt-2">
+                  {certDescHasEur1 ? (
+                    <>
+                      {certDescParts[0]}
+                      <span className="inline-block rounded-md bg-amber-300/20 px-2 py-0.5 font-bold text-amber-200 ring-1 ring-amber-200/40">
+                        EUR.1
+                      </span>
+                      {certDescParts[1]}
+                    </>
+                  ) : (
+                    t.certCtaDesc
+                  )}
+                </p>
+              </div>
+              <a
+                href="/contacto"
+                className="shrink-0 bg-blue-500 hover:bg-blue-400 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+              >
+                {t.certCtaButton} →
+              </a>
             </div>
-            <a
-              href="/contacto"
-              className="shrink-0 bg-blue-500 hover:bg-blue-400 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
-            >
-              {t.certCtaButton} →
-            </a>
+
+            {locale === "es" && (
+              <div className="mt-6 grid gap-3 md:grid-cols-2">
+                {certDocumentsEs.map((doc) => (
+                  <div
+                    key={doc.title}
+                    className="rounded-xl bg-white/10 border border-white/15 p-4"
+                  >
+                    <p className="font-semibold text-white">{doc.title}</p>
+                    <ul className="mt-2 space-y-1 text-sm text-blue-100">
+                      {doc.items.map((detail) => (
+                        <li key={detail} className="flex items-start gap-2">
+                          <span className="text-blue-300 mt-0.5">•</span>
+                          <span>{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
           </motion.div>
         </div>
       </section>

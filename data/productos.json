@@ -420,25 +420,25 @@
         "descripcion_larga": "El Chucho vaca es una especie demersal de gran tamaño, reconocida por su carne blanca, firme y de sabor delicado. Habita en los fondos arenosos y fangosos del Atlántico mauritano, donde se alimenta de moluscos y crustáceos. Es una especie muy apreciada en los mercados internacionales por su textura compacta y su excelente calidad. Tras la captura, se eviscera y congela a -18 °C, conservando toda su frescura y propiedades naturales."
     },
     {
-        "id": "cigarra-de-mar",
-        "nombre": "Cigarra de mar",
+        "id": "calamar",
+        "nombre": "Calamar",
         "origen": "Atlántico Centro-Este - Mauritania",
-        "descripcion": "La cigarra de mar es un crustáceo bentónico de alto valor comercial, muy apreciado por su carne blanca, firme y de sabor exquisito. Habita en los fondos rocosos del Atlántico mauritano, entre 10 y 150 metros de profundidad. Es una especie muy demandada por su textura delicada y su excelente calidad gastronómica. Tras la captura, se limpia cuidadosamente y se congela a −18 °C, preservando toda su frescura y propiedades naturales.",
-        "imagen_url": "/productos/cigarra-930x620.jpg",
-        "categoria": "Crustáceos",
+        "descripcion": "El calamar es un cefalópodo muy valorado por su carne tierna, sabor delicado y gran versatilidad culinaria. Se captura en aguas del Atlántico mauritano y se procesa poco después de la pesca para preservar su frescura. Tras su limpieza, se congela a -18 °C, manteniendo su textura firme y su calidad para exportación.",
+        "imagen_url": "/productos/sepia-768x576.jpg",
+        "categoria": "Cefalópodos",
         "talla_minima": "Consultar",
         "temporada": "Pendiente de consultar",
         "precio": null,
         "ficha_tecnica": {
-            "nombre_cientifico": "Scyllarides latus",
-            "presentacion": "Entera, cruda o cocida, congelada",
-            "temperatura_conservacion": "−18 °C",
-            "envasado": "Cajas de cartón aluminizado (5-10 kg)",
+            "nombre_cientifico": "Loligo vulgaris",
+            "presentacion": "Piezas enteras, limpias y congeladas",
+            "temperatura_conservacion": "-18 °C",
+            "envasado": "Cajas de cartón aluminizado (10-20 kg)",
             "zona_captura": "Atlántico Centro-Este - Mauritania",
             "certificacion": "ONISPA"
         },
-        "descripcion_corta": "Ficha técnica Nombre científico: Scyllarides latus Presentación: Entera, cruda o cocida, congelada Temperatura de conservación: −18 °C Envasado: Cajas de cartón aluminizado (5-10 kg) Zona de captura: Atlántico Centro-Este - Mauritania Certificación sanitaria: ONISPA",
-        "descripcion_larga": "La cigarra de mar es un crustáceo bentónico de alto valor comercial, muy apreciado por su carne blanca, firme y de sabor exquisito. Habita en los fondos rocosos del Atlántico mauritano, entre 10 y 150 metros de profundidad. Es una especie muy demandada por su textura delicada y su excelente calidad gastronómica. Tras la captura, se limpia cuidadosamente y se congela a −18 °C, preservando toda su frescura y propiedades naturales."
+        "descripcion_corta": "Ficha técnica Nombre científico: Loligo vulgaris Presentación: Piezas enteras, limpias y congeladas Temperatura de conservación: -18 °C Envasado: Cajas de cartón aluminizado (10-20 kg) Zona de captura: Atlántico Centro-Este - Mauritania Certificación sanitaria: ONISPA",
+        "descripcion_larga": "El calamar es un cefalópodo muy valorado por su carne tierna, sabor delicado y gran versatilidad culinaria. Se captura en aguas del Atlántico mauritano y se procesa poco después de la pesca para preservar su frescura. Tras su limpieza, se congela a -18 °C, manteniendo su textura firme y su calidad para exportación."
     },
     {
         "id": "cobia",
@@ -777,25 +777,25 @@
         "descripcion_larga": "El mero moreno es un pez demersal de gran tamaño y carne muy apreciada por su textura firme y sabor suave. Habita en fondos rocosos del Atlántico mauritano, donde se alimenta de crustáceos y pequeños peces, lo que le otorga una calidad excepcional. Su carne blanca y jugosa es muy demandada en los mercados internacionales. Tras la captura, se eviscera y congela a -18 °C para preservar toda su frescura y valor nutritivo."
     },
     {
-        "id": "morena-negra",
-        "nombre": "Morena negra",
+        "id": "sardinella",
+        "nombre": "Sardinella",
         "origen": "Atlántico Centro-Este - Mauritania",
-        "descripcion": "La morena negra es una especie demersal costera reconocida por su carne blanca, firme y de sabor intenso. Habita en fondos rocosos del Atlántico mauritano, donde se refugia en grietas y cuevas. Su carne es muy apreciada por su textura compacta y su valor gastronómico, especialmente en los mercados mediterráneos. Tras la captura, se eviscera y congela a -18 °C, garantizando su frescura y excelente conservación.",
-        "imagen_url": "/productos/morena-negra-930x620.png",
+        "descripcion": "La sardinella es un pez pelágico de gran importancia comercial, apreciado por su carne sabrosa y su valor nutricional. Se captura en bancos costeros del Atlántico mauritano y se congela rápidamente tras su descarga para preservar su frescura y calidad. Es un producto con alta demanda en mercados de exportación por su rendimiento y versatilidad.",
+        "imagen_url": "/productos/sardina-930x620.webp",
         "categoria": "Pescado",
         "talla_minima": "Consultar",
         "temporada": "Pendiente de consultar",
         "precio": null,
         "ficha_tecnica": {
-            "nombre_cientifico": "Muraena helena",
+            "nombre_cientifico": "Sardinella aurita",
             "presentacion": "Piezas enteras, evisceradas y congeladas",
             "temperatura_conservacion": "-18 °C",
-            "envasado": "Cajas de cartón aluminizado (10-20 kg)",
+            "envasado": "Cajas de cartón aluminizado (2, 5 o 20 kg)",
             "zona_captura": "Atlántico Centro-Este - Mauritania",
             "certificacion": "ONISPA"
         },
-        "descripcion_corta": "Ficha técnica Nombre científico: Muraena helena Presentación: Piezas enteras, evisceradas y congeladas Temperatura de conservación: -18 °C Envasado: Cajas de cartón aluminizado (10-20 kg) Zona de captura: Atlántico Centro-Este - Mauritania Certificación sanitaria: ONISPA",
-        "descripcion_larga": "La morena negra es una especie demersal costera reconocida por su carne blanca, firme y de sabor intenso. Habita en fondos rocosos del Atlántico mauritano, donde se refugia en grietas y cuevas. Su carne es muy apreciada por su textura compacta y su valor gastronómico, especialmente en los mercados mediterráneos. Tras la captura, se eviscera y congela a -18 °C, garantizando su frescura y excelente conservación."
+        "descripcion_corta": "Ficha técnica Nombre científico: Sardinella aurita Presentación: Piezas enteras, evisceradas y congeladas Temperatura de conservación: -18 °C Envasado: Cajas de cartón aluminizado (2, 5 o 20 kg) Zona de captura: Atlántico Centro-Este - Mauritania Certificación sanitaria: ONISPA",
+        "descripcion_larga": "La sardinella es un pez pelágico de gran importancia comercial, apreciado por su carne sabrosa y su valor nutricional. Se captura en bancos costeros del Atlántico mauritano y se congela rápidamente tras su descarga para preservar su frescura y calidad. Es un producto con alta demanda en mercados de exportación por su rendimiento y versatilidad."
     },
     {
         "id": "musola",

@@ -188,7 +188,7 @@ export default function Navbar() {
               height={66}
               className="h-14 w-14 object-contain rounded-full bg-white p-0.5"
               priority
-            />
+            /> <span className="ml-3 text-xl font-bold tracking-tight">OceanFresh</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
