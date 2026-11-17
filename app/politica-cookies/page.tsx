@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { legalInfo, legalPlaceholderNotice } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Política de cookies | OceanFresh",
+  title: "Política de cookies",
   description: "Información sobre las cookies técnicas y de preferencia utilizadas por el sitio web.",
+  alternates: { canonical: "/politica-cookies" },
 };
 
 export default function PoliticaCookiesPage() {

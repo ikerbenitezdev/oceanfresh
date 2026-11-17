@@ -262,7 +262,7 @@ export default function CatalogoClient({ productos }: CatalogoClientProps) {
 
       {productosFiltrados.length > 0 ? (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {productosFiltrados.map((producto) => (
+          {productosFiltrados.map((producto, index) => (
             <Link
               key={producto.id}
               href={`/productos/${producto.id}`}
@@ -273,6 +273,8 @@ export default function CatalogoClient({ productos }: CatalogoClientProps) {
                   src={producto.imagen_url}
                   alt={producto.nombre}
                   fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  loading={index < 3 ? "eager" : "lazy"}
                   className="object-contain p-4 transition-transform duration-300"
                 />
                 <div className="absolute top-3 left-3">

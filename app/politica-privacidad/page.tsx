@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { legalInfo, legalPlaceholderNotice } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Política de privacidad | OceanFresh",
+  title: "Política de privacidad",
   description: "Información sobre el tratamiento de datos personales en el sitio web.",
+  alternates: { canonical: "/politica-privacidad" },
 };
 
 export default function PoliticaPrivacidadPage() {

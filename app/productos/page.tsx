@@ -3,7 +3,7 @@ import CatalogoClient from "@/components/CatalogoClient";
 import productos from "@/data/productos.json";
 
 export const metadata: Metadata = {
-  title: "Catálogo de Productos | OceanFresh",
+  title: "Catálogo de Productos",
   description:
     "Explora nuestro catálogo de pescado fresco y congelado procedente del Banco Pesquero de Mauritania.",
   keywords: [

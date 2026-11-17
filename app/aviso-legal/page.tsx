@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { legalInfo, legalPlaceholderNotice } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Aviso legal | OceanFresh",
+  title: "Aviso legal",
   description: "Información legal del titular del sitio, condiciones de uso y responsabilidades.",
+  alternates: { canonical: "/aviso-legal" },
 };
 
 export default function AvisoLegalPage() {

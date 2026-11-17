@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const seoDescription = producto.descripcion.slice(0, 160);
 
   return {
-    title: `${producto.nombre} | OceanFresh`,
+    title: producto.nombre,
     description: seoDescription,
     keywords: [
       producto.nombre,
@@ -112,6 +112,7 @@ export default async function ProductoDetalle({ params }: Props) {
             alt={producto.nombre}
             fill
             priority
+            sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-contain p-6"
           />
           <div className="absolute top-4 left-4">
@@ -354,6 +355,7 @@ export default async function ProductoDetalle({ params }: Props) {
                   src={rel.imagen_url}
                   alt={rel.nombre}
                   fill
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   className="object-contain p-3 transition-transform duration-300"
                 />
               </div>

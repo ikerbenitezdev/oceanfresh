@@ -92,7 +92,7 @@ function LanguageDropdown({ locale, label, onChange, mobile = false }: LanguageD
   }, []);
 
   return (
-    <div ref={dropdownRef} className={`relative ${mobile ? "w-[150px]" : "min-w-[132px]"}`}>
+    <div ref={dropdownRef} className={`relative ${mobile ? "w-full max-w-[220px]" : ""}`}>
       <div>
         <button
           type="button"
@@ -100,7 +100,7 @@ function LanguageDropdown({ locale, label, onChange, mobile = false }: LanguageD
           aria-haspopup="listbox"
           aria-expanded={open}
           aria-label={label}
-          className={`flex items-center justify-between gap-2 rounded-md border border-blue-500 bg-blue-700 px-2.5 py-1.5 text-xs text-white shadow-sm transition hover:bg-blue-600 ${mobile ? "w-full" : "min-w-[132px]"}`}
+          className={`flex min-h-11 items-center justify-between gap-2 rounded-full border border-white/30 px-4 text-[18px] font-medium text-white transition-colors hover:bg-white/10 ${mobile ? "w-full" : ""}`}
         >
           <span className="flex items-center gap-2">
             <Image
@@ -130,7 +130,7 @@ function LanguageDropdown({ locale, label, onChange, mobile = false }: LanguageD
       {open && (
         <div
           role="listbox"
-          className={`absolute ${mobile ? "left-0 right-0" : "right-0"} top-full z-50 mt-2 overflow-hidden rounded-xl border border-blue-700 bg-blue-900 shadow-2xl`}
+          className={`absolute ${mobile ? "left-0 right-0" : "end-0 min-w-[180px]"} top-full z-50 mt-2 overflow-hidden rounded-xl bg-white py-1 text-[#1f2b4d] shadow-[0_12px_32px_rgba(11,31,73,.22)]`}
         >
           {SUPPORTED_LOCALES.map((code) => {
             const isActive = code === locale;
@@ -145,8 +145,8 @@ function LanguageDropdown({ locale, label, onChange, mobile = false }: LanguageD
                   onChange(code);
                   setOpen(false);
                 }}
-                className={`flex w-full items-center gap-3 px-3 py-2.5 text-left text-sm transition ${
-                  isActive ? "bg-blue-600 text-white" : "text-blue-100 hover:bg-blue-800"
+                className={`flex min-h-11 w-full items-center gap-3 px-4 text-start text-[18px] transition-colors ${
+                  isActive ? "bg-[#eef1f7] font-medium" : "hover:bg-[#f4f4f2]"
                 }`}
               >
                 <Image
@@ -177,28 +177,29 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-blue-800 text-white shadow-lg sticky top-0 z-50" dir={dir}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="nav fixed inset-x-0 top-0 z-50 w-full border-b border-white/10 bg-[#0b1f49] text-white" dir={dir}>
+      <div className="site-wrap">
         <div className="flex items-center justify-between h-24">
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center gap-3">
             <Image
               src="/logo.jpeg"
               alt="OceanFresh Logo"
-              width={66}
-              height={66}
-              className="h-14 w-14 object-contain rounded-full bg-white p-0.5"
+              width={128}
+              height={128}
+              className="h-16 w-16 object-contain rounded-full bg-white p-0.5"
               priority
-            /> <span className="ml-3 text-xl font-bold tracking-tight">OceanFresh</span>
+            />
+            <span className="text-[28px] font-semibold tracking-tight">OceanFresh</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-white hover:text-blue-500 transition-colors text-md font-medium">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8 whitespace-nowrap">
+            <Link href="/" className="whitespace-nowrap text-[18px] font-medium text-white decoration-1 underline-offset-[6px] hover:underline">
               {t.home}
             </Link>
-            <Link href="/productos" className="text-white hover:text-blue-500 transition-colors text-md font-medium">
+            <Link href="/productos" className="whitespace-nowrap text-[18px] font-medium text-white decoration-1 underline-offset-[6px] hover:underline">
               {t.catalog}
             </Link>
-            <Link href="/#quienes-somos" className="text-white hover:text-blue-500 transition-colors text-md font-medium">
+            <Link href="/#quienes-somos" className="whitespace-nowrap text-[18px] font-medium text-white decoration-1 underline-offset-[6px] hover:underline">
               {t.about}
             </Link>
 
@@ -206,16 +207,17 @@ export default function Navbar() {
 
             <Link
               href="/contacto"
-              className="bg-blue-500 hover:bg-blue-400 text-white text-md font-semibold px-4 py-2 rounded-md transition-colors"
+              className="inline-flex min-h-11 items-center whitespace-nowrap rounded-full bg-[#f7941d] px-6 text-[18px] font-medium text-[#1f2b4d] transition-[background-color,transform] hover:bg-[#e2861a] active:scale-[.985]"
             >
               {t.contact}
             </Link>
           </div>
 
           <button
-            className="md:hidden text-white hover:text-blue-500 focus:outline-none"
+            className="lg:hidden -me-2 inline-flex h-11 w-11 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={t.menu}
+            aria-expanded={menuOpen}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {menuOpen ? (
@@ -228,24 +230,24 @@ export default function Navbar() {
         </div>
 
         {menuOpen && (
-          <div className="md:hidden py-4 border-t border-blue-800 space-y-3 text-center">
-            <Link href="/" className="block text-white hover:text-blue-500 py-1 text-sm font-medium text-center" onClick={() => setMenuOpen(false)}>
+          <div className="lg:hidden flex flex-col items-center gap-1 border-t border-white/15 py-4 text-center">
+            <Link href="/" className="inline-flex min-h-11 items-center px-4 text-lg font-medium text-white hover:underline underline-offset-[6px]" onClick={() => setMenuOpen(false)}>
               {t.home}
             </Link>
-            <Link href="/productos" className="block text-white hover:text-blue-500 py-1 text-sm font-medium text-center" onClick={() => setMenuOpen(false)}>
+            <Link href="/productos" className="inline-flex min-h-11 items-center px-4 text-lg font-medium text-white hover:underline underline-offset-[6px]" onClick={() => setMenuOpen(false)}>
               {t.catalog}
             </Link>
-            <Link href="/#quienes-somos" className="block text-white hover:text-blue-500 py-1 text-sm font-medium text-center" onClick={() => setMenuOpen(false)}>
+            <Link href="/#quienes-somos" className="inline-flex min-h-11 items-center px-4 text-lg font-medium text-white hover:underline underline-offset-[6px]" onClick={() => setMenuOpen(false)}>
               {t.about}
             </Link>
 
-            <div className="pt-2 flex justify-center">
+            <div className="flex w-full justify-center pt-2">
               <LanguageDropdown locale={locale} label={t.language} onChange={handleLocaleChange} mobile />
             </div>
 
             <Link
               href="/contacto"
-              className="block bg-blue-500 hover:bg-blue-400 text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors w-fit mx-auto"
+              className="mt-2 inline-flex min-h-11 items-center rounded-full bg-[#f7941d] px-6 text-lg font-medium text-[#1f2b4d] transition-colors hover:bg-[#e2861a]"
               onClick={() => setMenuOpen(false)}
             >
               {t.contact}

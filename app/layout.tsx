@@ -4,22 +4,32 @@ import CookieNotice from "../components/CookieNotice";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 import { legalInfo } from "@/lib/legal";
+import { fontVariables } from "@/lib/fonts";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://oceanfresh.es";
+
+const organizationId = `${siteUrl}/#organization`;
+
+// Schema telephone in international format. Assumes the number is Spanish (+34).
+const schemaPhone = legalInfo.phone.startsWith("+")
+  ? legalInfo.phone
+  : `+34 ${legalInfo.phone.replace(/(\d{3})(\d{3})(\d{3})/, "$1 $2 $3")}`;
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": organizationId,
   name: "OceanFresh",
-  url: siteUrl,
+  url: `${siteUrl}/`,
   logo: `${siteUrl}/logo.jpeg`,
   description:
     "Importación directa de pescado fresco y congelado desde Mauritania para distribuidores y canal HORECA.",
   email: legalInfo.email,
-  telephone: legalInfo.phone,
+  telephone: schemaPhone,
   address: {
     "@type": "PostalAddress",
-    streetAddress: legalInfo.address,
+    streetAddress: "Ilot P5, Lot 345, BP 00156",
+    addressLocality: "Nouadhibou",
     addressCountry: "MR",
   },
   areaServed: ["ES", "EU", "MA", "MR"],
@@ -28,14 +38,11 @@ const organizationJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
   name: "OceanFresh",
-  url: siteUrl,
+  url: `${siteUrl}/`,
   inLanguage: "es",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${siteUrl}/productos`,
-    "query-input": "required name=search_term_string",
-  },
+  publisher: { "@id": organizationId },
 };
 
 export const metadata: Metadata = {
@@ -45,7 +52,7 @@ export const metadata: Metadata = {
     template: "%s | OceanFresh",
   },
   description:
-    "Importación directa de pescado fresco y congelado desde el Banco Pesquero de Mauritania. Calidad premium, cadena de frío certificada y exportación sin intermediarios.",
+    "Importación directa de pescado fresco y congelado desde el Banco Pesquero de Mauritania. Cadena de frío certificada y exportación sin intermediarios.",
   keywords: [
     "importación de pescado",
     "pescado mauritania",
@@ -60,9 +67,6 @@ export const metadata: Metadata = {
     "pescado para horeca",
     "oceanfresh",
   ],
-  alternates: {
-    canonical: "/",
-  },
   robots: {
     index: true,
     follow: true,
@@ -130,7 +134,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className={fontVariables} suppressHydrationWarning>
       <body className="antialiased bg-white text-white">
         <script
           type="application/ld+json"
@@ -141,7 +145,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <Navbar />
-        <main>{children}</main>
+        <main className="pt-24">{children}</main>
         <CookieNotice />
         <SiteFooter />
       </body>

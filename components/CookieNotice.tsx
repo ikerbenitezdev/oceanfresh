@@ -104,7 +104,7 @@ export default function CookieNotice() {
               document.cookie = `${NOTICE_COOKIE}=1; path=/; max-age=31536000; samesite=lax`;
               setVisible(false);
             }}
-            className="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+            className="inline-flex shrink-0 items-center justify-center min-h-12 rounded-full bg-[#f7941d] px-6 text-base font-medium text-[#1f2b4d] transition-colors hover:bg-[#e2861a]"
           >
             {t.button}
           </button>
